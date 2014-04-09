@@ -80,7 +80,7 @@ public class DealsFragment extends BaseFragment implements OnClickListener{
 		setRightSelector(R.drawable.button_2_hover, R.drawable.button_2_hover);
 		setHeaderImg(R.drawable.header_logo);
 		
-		setIntializeSlider(getBtnLeft());
+	//	setIntializeSlider(getBtnLeft());
 		
 	}
 
@@ -90,7 +90,7 @@ public class DealsFragment extends BaseFragment implements OnClickListener{
 	public void onClick(View v) {
 		
 		if(v==getBtnLeft()){
-			slidingMenu.toggle();
+		//	slidingMenu.toggle();
 		}
 		else if(v==getBtnRight()){
 			

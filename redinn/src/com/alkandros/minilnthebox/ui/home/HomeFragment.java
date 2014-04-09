@@ -83,7 +83,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		setRightSelector(R.drawable.button_2_hover, R.drawable.button_2_hover);
 		setHeaderImg(R.drawable.header_logo);
 		
-		setIntializeSlider(getBtnLeft());
+		//setIntializeSlider(getBtnLeft());
 		
 		linGrid1=(LinearLayout)view.findViewById(R.id.linGrid1);
 		linGrid2=(LinearLayout)view.findViewById(R.id.linGrid2);
@@ -121,7 +121,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		
 		if(v==getBtnLeft()){
 			
-			slidingMenu.toggle();
+			//slidingMenu.toggle();
 		}
 		else if(v==getBtnRight()){
 			
