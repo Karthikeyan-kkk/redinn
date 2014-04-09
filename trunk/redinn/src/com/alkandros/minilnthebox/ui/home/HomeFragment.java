@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 
 
@@ -17,6 +18,8 @@ import com.alkandros.minilnthebox.adapter.ImagePagerAdapter;
 import com.alkandros.minilnthebox.baseclass.BaseFragment;
 import com.alkandros.minilnthebox.custom.autoscrollviewadapter.AutoScrollViewPager;
 import com.alkandros.minilnthebox.custom.viewpagerindicator.CirclePageIndicator;
+import com.alkandros.minilnthebox.utils.Utils;
+import com.alkandros.minilnthebox.utils.ViewUtils;
 
 
 public class HomeFragment extends BaseFragment{
@@ -32,6 +35,10 @@ public class HomeFragment extends BaseFragment{
 	private List<Integer>       imageIdList;
 	
 	private ImagePagerAdapter imagePagerAdapter;
+	private LinearLayout linGrid1;
+	private LinearLayout linGrid2;
+	private LinearLayout linGrid3;
+	int width=0;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,6 +47,17 @@ public class HomeFragment extends BaseFragment{
 		mInflater	= inflater;
 		view	= inflater.inflate(R.layout.frgment_home, container, false);
 		context=getActivity();
+		
+		
+		linGrid1=(LinearLayout)view.findViewById(R.id.linGrid1);
+		linGrid2=(LinearLayout)view.findViewById(R.id.linGrid2);
+		linGrid3=(LinearLayout)view.findViewById(R.id.linGrid3);
+		
+		width=Utils.getDeviceWidth(context)/3;
+		
+		ViewUtils.setViewHeight(linGrid1, width);
+		ViewUtils.setViewHeight(linGrid2, width);
+		ViewUtils.setViewHeight(linGrid3, width);
 		
 		autoScrollViewPager=(AutoScrollViewPager)view.findViewById(R.id.view_pager);
 		  imageIdList = new ArrayList<Integer>();

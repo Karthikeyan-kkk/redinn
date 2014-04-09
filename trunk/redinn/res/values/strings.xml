@@ -4,5 +4,14 @@
     <string name="app_name">MinilnTheBox</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    
+    
+    
+    
+    <!-- Home Page  -->
+    
+    <string name="best_sellers">Best Sellers</string>
+    <string name="new_arrivals">New Arrivals</string>
+    <string name="unnder_1.99">Under &#36; 1.99</string>
 
 </resources>
