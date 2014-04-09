@@ -20,15 +20,12 @@ import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.adapter.ImagePagerAdapter;
 import com.alkandros.minilnthebox.baseclass.BaseFragment;
 import com.alkandros.minilnthebox.custom.autoscrollviewadapter.AutoScrollViewPager;
-import com.alkandros.minilnthebox.custom.slidinglib.SlidingMenu;
 import com.alkandros.minilnthebox.custom.viewpagerindicator.CirclePageIndicator;
-import com.alkandros.minilnthebox.manager.SliderManager;
 import com.alkandros.minilnthebox.utils.Utils;
 import com.alkandros.minilnthebox.utils.ViewUtils;
 
 
-
-public class HomeFragment extends BaseFragment implements OnClickListener{
+public class DealsFragment extends BaseFragment implements OnClickListener{
 	
 	
 	private View view;
@@ -55,7 +52,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 			Bundle savedInstanceState) {
 		
 		mInflater	= inflater;
-		view	= inflater.inflate(R.layout.frgment_home, container, false);
+		view	= inflater.inflate(R.layout.fragment_deals, container, false);
 		context=getActivity();
 		
 		
@@ -74,7 +71,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		
 	}
 
-	
+
 
 	private void intialazeUI() {
 		
@@ -85,33 +82,6 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		
 		setIntializeSlider(getBtnLeft());
 		
-		linGrid1=(LinearLayout)view.findViewById(R.id.linGrid1);
-		linGrid2=(LinearLayout)view.findViewById(R.id.linGrid2);
-		linGrid3=(LinearLayout)view.findViewById(R.id.linGrid3);
-		
-		width=Utils.getDeviceWidth(context)/3;
-		
-		ViewUtils.setViewHeight(linGrid1, width);
-		ViewUtils.setViewHeight(linGrid2, width);
-		ViewUtils.setViewHeight(linGrid3, width);
-		
-		autoScrollViewPager=(AutoScrollViewPager)view.findViewById(R.id.view_pager);
-		  imageIdList = new ArrayList<Integer>();
-	        imageIdList.add(R.drawable.banner1);
-	        imageIdList.add(R.drawable.banner2);
-	        imageIdList.add(R.drawable.banner3);
-	        imageIdList.add(R.drawable.banner4);
-	        
-	        imagePagerAdapter=new ImagePagerAdapter(context, imageIdList);
-	        autoScrollViewPager.setAdapter(imagePagerAdapter);
-	        
-	        autoScrollViewPager.setInterval(2000);
-	        autoScrollViewPager.startAutoScroll();
-	        
-	        
-		circlePageIndicator=(CirclePageIndicator)view.findViewById(R.id.indicator);
-		circlePageIndicator.setViewPager(autoScrollViewPager);
-		
 	}
 
 
@@ -120,7 +90,6 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 	public void onClick(View v) {
 		
 		if(v==getBtnLeft()){
-			
 			slidingMenu.toggle();
 		}
 		else if(v==getBtnRight()){
