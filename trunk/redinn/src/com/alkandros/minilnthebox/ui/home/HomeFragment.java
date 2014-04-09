@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 
@@ -22,7 +25,7 @@ import com.alkandros.minilnthebox.utils.Utils;
 import com.alkandros.minilnthebox.utils.ViewUtils;
 
 
-public class HomeFragment extends BaseFragment{
+public class HomeFragment extends BaseFragment implements OnClickListener{
 	
 	
 	private View view;
@@ -40,6 +43,10 @@ public class HomeFragment extends BaseFragment{
 	private LinearLayout linGrid3;
 	int width=0;
 	
+	
+	
+	
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -47,6 +54,31 @@ public class HomeFragment extends BaseFragment{
 		mInflater	= inflater;
 		view	= inflater.inflate(R.layout.frgment_home, container, false);
 		context=getActivity();
+		
+		
+		intialazeUI();
+		ClickListner();
+		
+		
+		return view;
+	}
+
+
+
+	private void ClickListner() {
+		getBtnLeft().setOnClickListener(this);
+		getBtnRight().setOnClickListener(this);
+		
+	}
+
+
+
+	private void intialazeUI() {
+		
+		setHeaderIntialize(view);
+		setLeftSelector(R.drawable.button_1_hover, R.drawable.button_1_hover);
+		setRightSelector(R.drawable.button_2_hover, R.drawable.button_2_hover);
+		setHeaderImg(R.drawable.header_logo);
 		
 		
 		linGrid1=(LinearLayout)view.findViewById(R.id.linGrid1);
@@ -75,7 +107,21 @@ public class HomeFragment extends BaseFragment{
 	        
 		circlePageIndicator=(CirclePageIndicator)view.findViewById(R.id.indicator);
 		circlePageIndicator.setViewPager(autoScrollViewPager);
-		return view;
+		
+	}
+
+
+
+	@Override
+	public void onClick(View v) {
+		
+		if(v==getBtnLeft()){
+			
+		}
+		else if(v==getBtnRight()){
+			
+		}
+		
 	}
 
 }
