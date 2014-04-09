@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey" >
+
+    <include
+        android:id="@+id/include1"
+        android:layout_alignParentTop="true"
+        layout="@layout/common_header" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/include1" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <com.alkandros.minilnthebox.custom.autoscrollviewadapter.AutoScrollViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <com.alkandros.minilnthebox.custom.viewpagerindicator.CirclePageIndicator
+                android:id="@+id/indicator"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/view_pager"
+                android:padding="10dip" />
+
+            <LinearLayout
+                android:id="@+id/lin1"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_below="@+id/view_pager"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" 
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:text="TextView" />
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                          android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/banner4" />
+                    
+                </LinearLayout>
+                
+                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" 
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textView1"
+                          android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:text="TextView" />
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                          android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/banner4"  />
+                    
+                </LinearLayout>
+                
+                  <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" 
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textView1"
+                          android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:text="TextView" />
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                          android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/banner4"  />
+                    
+                </LinearLayout>
+
+            </LinearLayout>
+            
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
