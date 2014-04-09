@@ -1,7 +1,9 @@
 package com.alkandros.minilnthebox.baseclass;
 
 import com.alkandros.minilnthebox.R;
+import com.alkandros.minilnthebox.custom.slidinglib.SlidingMenu;
 import com.alkandros.minilnthebox.manager.SelectorManager;
+import com.alkandros.minilnthebox.manager.SliderManager;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,7 +21,8 @@ public abstract  class BaseFragment extends Fragment {
 	public ImageView btnRight;
 	public TextView title;
 	
-	
+	public SliderManager slider;
+	public SlidingMenu slidingMenu;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,17 @@ public abstract  class BaseFragment extends Fragment {
 		
 	}
 
+	
+
+
+	public void setIntializeSlider(View  v) {
+		
+		slider   		= new SliderManager(getActivity());
+		slidingMenu		=slider.initializeSlidingMenu(v);
+		
+		
+	}
+	
 
 
 	public void setHeaderIntialize(View  v) {

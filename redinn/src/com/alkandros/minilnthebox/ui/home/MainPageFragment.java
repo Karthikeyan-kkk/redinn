@@ -21,7 +21,8 @@ public class MainPageFragment extends FragmentActivity implements
 	private Button tab5;
 	
 	
-	private HomeFragment homeFragment;
+	private HomeFragment homeFragment=null;
+	private DealsFragment dealsFragment=null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -65,14 +66,40 @@ public class MainPageFragment extends FragmentActivity implements
 		setTabSelector(v);
 
 		if (v == tab1) {
+			if(homeFragment==null){
+				homeFragment=new HomeFragment();
+			}
+			
+			changeFragment(homeFragment);
 
 		} else if (v == tab2) {
+			
+			if(dealsFragment==null){
+				dealsFragment=new DealsFragment();
+			}
+			
+			changeFragment(dealsFragment);
 
 		} else if (v == tab3) {
+			if(dealsFragment==null){
+				dealsFragment=new DealsFragment();
+			}
+			
+			changeFragment(dealsFragment);
 
 		} else if (v == tab4) {
+			if(dealsFragment==null){
+				dealsFragment=new DealsFragment();
+			}
+			
+			changeFragment(dealsFragment);
 
 		} else if (v == tab5) {
+			if(dealsFragment==null){
+				dealsFragment=new DealsFragment();
+			}
+			
+			changeFragment(dealsFragment);
 
 		}
 
