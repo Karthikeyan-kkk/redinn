@@ -3,6 +3,10 @@
 
     <color name="black">#000000</color>
     <color name="grey">#848482</color>
+    
+    <color name="light_grey">#e3e3ea</color>
+    
+    
     <color name="cacheHintColor">#00000000</color>
    
    
