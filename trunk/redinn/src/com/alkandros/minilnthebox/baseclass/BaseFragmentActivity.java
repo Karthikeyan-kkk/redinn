@@ -59,6 +59,7 @@ public abstract  class BaseFragmentActivity extends FragmentActivity {
 	
 	public void setTitle(String titleContent) {
 		
+		title.setBackgroundResource(0);
 		title.setText(titleContent);
 		
 	}
@@ -67,7 +68,7 @@ public abstract  class BaseFragmentActivity extends FragmentActivity {
 	public void setHeaderImg(int imgContent) {
 		
 		title.setBackgroundResource(imgContent);
-		
+		title.setText("");
 	}
 
 
