@@ -9,9 +9,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.alkandros.minilnthebox.R;
+import com.alkandros.minilnthebox.baseclass.BaseFragmentActivity;
 
 
-public class MainPageFragment extends FragmentActivity implements
+public class MainPageFragment extends BaseFragmentActivity implements
 		OnClickListener {
 
 	private Button tab1;
@@ -43,7 +44,12 @@ public class MainPageFragment extends FragmentActivity implements
 		tab4 = (Button) findViewById(R.id.btnTab4);
 		tab5 = (Button) findViewById(R.id.btnTab5);
 
+		setHeaderIntialize();
+		setLeftSelector(R.drawable.button_1_hover, R.drawable.button_1_hover);
+		setRightSelector(R.drawable.button_2_hover, R.drawable.button_2_hover);
+		setHeaderImg(R.drawable.header_logo);
 		
+		setIntializeSlider(getBtnLeft());
 		
 		setTabSelector(tab1);
 		homeFragment=new HomeFragment();
@@ -58,6 +64,8 @@ public class MainPageFragment extends FragmentActivity implements
 		tab3.setOnClickListener(this);
 		tab4.setOnClickListener(this);
 		tab5.setOnClickListener(this);
+		
+		getBtnLeft().setOnClickListener(this);
 
 	}
 
@@ -101,6 +109,11 @@ public class MainPageFragment extends FragmentActivity implements
 			
 			changeFragment(dealsFragment);
 
+		}
+		
+		
+		else if(v==getBtnLeft()){
+			slidingMenu.toggle();
 		}
 
 	}

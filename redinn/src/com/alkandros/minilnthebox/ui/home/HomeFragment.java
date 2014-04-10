@@ -69,8 +69,8 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 
 
 	private void ClickListner() {
-		getBtnLeft().setOnClickListener(this);
-		getBtnRight().setOnClickListener(this);
+		//getBtnLeft().setOnClickListener(this);
+		//getBtnRight().setOnClickListener(this);
 		
 	}
 
@@ -78,10 +78,10 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 
 	private void intialazeUI() {
 		
-		setHeaderIntialize(view);
-		setLeftSelector(R.drawable.button_1_hover, R.drawable.button_1_hover);
-		setRightSelector(R.drawable.button_2_hover, R.drawable.button_2_hover);
-		setHeaderImg(R.drawable.header_logo);
+		//setHeaderIntialize(view);
+		//setLeftSelector(R.drawable.button_1_hover, R.drawable.button_1_hover);
+		//setRightSelector(R.drawable.button_2_hover, R.drawable.button_2_hover);
+		//setHeaderImg(R.drawable.header_logo);
 		
 		//setIntializeSlider(getBtnLeft());
 		

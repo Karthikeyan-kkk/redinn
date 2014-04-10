@@ -32,15 +32,7 @@ public class DealsFragment extends BaseFragment implements OnClickListener{
 	private LayoutInflater mInflater;
 	private Context context;
 	
-	private CirclePageIndicator circlePageIndicator;
-	private AutoScrollViewPager autoScrollViewPager;
 	
-	private List<Integer>       imageIdList;
-	
-	private ImagePagerAdapter imagePagerAdapter;
-	private LinearLayout linGrid1;
-	private LinearLayout linGrid2;
-	private LinearLayout linGrid3;
 	int width=0;
 	
 	
@@ -66,8 +58,8 @@ public class DealsFragment extends BaseFragment implements OnClickListener{
 
 
 	private void ClickListner() {
-		getBtnLeft().setOnClickListener(this);
-		getBtnRight().setOnClickListener(this);
+	//	getBtnLeft().setOnClickListener(this);
+		//getBtnRight().setOnClickListener(this);
 		
 	}
 
@@ -75,10 +67,10 @@ public class DealsFragment extends BaseFragment implements OnClickListener{
 
 	private void intialazeUI() {
 		
-		setHeaderIntialize(view);
-		setLeftSelector(R.drawable.button_1_hover, R.drawable.button_1_hover);
-		setRightSelector(R.drawable.button_2_hover, R.drawable.button_2_hover);
-		setHeaderImg(R.drawable.header_logo);
+		//setHeaderIntialize(view);
+		//setLeftSelector(R.drawable.button_1_hover, R.drawable.button_1_hover);
+		//setRightSelector(R.drawable.button_2_hover, R.drawable.button_2_hover);
+		//setHeaderImg(R.drawable.header_logo);
 		
 	//	setIntializeSlider(getBtnLeft());
 		
