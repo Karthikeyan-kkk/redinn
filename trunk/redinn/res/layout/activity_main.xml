@@ -3,13 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-  
+    <include
+        android:id="@+id/include1"
+        android:layout_alignParentTop="true"
+        layout="@layout/common_header" />
     
     <FrameLayout
          android:id="@+id/frgContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
+       android:layout_below="@+id/include1"
         
         android:layout_above="@+id/tab"
         >
