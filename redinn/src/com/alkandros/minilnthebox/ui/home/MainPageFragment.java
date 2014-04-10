@@ -77,7 +77,7 @@ public class MainPageFragment extends BaseFragmentActivity implements
 			if(homeFragment==null){
 				homeFragment=new HomeFragment();
 			}
-			
+			setHeaderImg(R.drawable.header_logo);
 			changeFragment(homeFragment);
 
 		} else if (v == tab2) {
@@ -85,28 +85,28 @@ public class MainPageFragment extends BaseFragmentActivity implements
 			if(dealsFragment==null){
 				dealsFragment=new DealsFragment();
 			}
-			
+			setTitle("History");
 			changeFragment(dealsFragment);
 
 		} else if (v == tab3) {
 			if(dealsFragment==null){
 				dealsFragment=new DealsFragment();
 			}
-			
+			setTitle("Deals");
 			changeFragment(dealsFragment);
 
 		} else if (v == tab4) {
 			if(dealsFragment==null){
 				dealsFragment=new DealsFragment();
 			}
-			
+			setTitle("Me");
 			changeFragment(dealsFragment);
 
 		} else if (v == tab5) {
 			if(dealsFragment==null){
 				dealsFragment=new DealsFragment();
 			}
-			
+			setTitle("Setting");
 			changeFragment(dealsFragment);
 
 		}
