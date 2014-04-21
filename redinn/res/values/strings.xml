@@ -13,5 +13,14 @@
     <string name="best_sellers">Best Sellers</string>
     <string name="new_arrivals">New Arrivals</string>
     <string name="unnder_1.99">Under &#36; 1.99</string>
+    
+    
+    
+    
+     <!-- Error Msg -->
+    
+    <string name="common_error_message">Cannot continue at this time. Please try again later.</string>
+    <string name="connection_error_message">Please Check your connection and try again.</string>
+     <string name="server_error_message">Server err.</string>
 
 </resources>
