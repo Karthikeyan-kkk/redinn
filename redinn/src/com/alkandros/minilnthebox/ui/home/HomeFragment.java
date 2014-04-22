@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,7 +23,11 @@ import com.alkandros.minilnthebox.baseclass.BaseFragment;
 import com.alkandros.minilnthebox.custom.autoscrollviewadapter.AutoScrollViewPager;
 import com.alkandros.minilnthebox.custom.slidinglib.SlidingMenu;
 import com.alkandros.minilnthebox.custom.viewpagerindicator.CirclePageIndicator;
+import com.alkandros.minilnthebox.manager.AppPreferenceManager;
 import com.alkandros.minilnthebox.manager.SliderManager;
+import com.alkandros.minilnthebox.model.ConfigModel;
+import com.alkandros.minilnthebox.model.FeaturedModel;
+import com.alkandros.minilnthebox.model.ImagePrefixModel;
 import com.alkandros.minilnthebox.utils.Utils;
 import com.alkandros.minilnthebox.utils.ViewUtils;
 
@@ -46,7 +51,11 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 	private LinearLayout linGrid3;
 	int width=0;
 	
+	//private ImageView img1,img2,img3,img4,img5,img6,img7,img8,img9;
 	
+	//private TextView txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9;
+	private ImageView img[]=new ImageView[9];
+	private TextView txt[]=new TextView[9];
 	
 	
 	
@@ -64,6 +73,8 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		ClickListner();
 		setData();
 		
+		ConfigModel configModel=AppPreferenceManager.getConfigModel(context);
+		System.out.println("DATA = "+configModel.getSlideShowModels().get(0).getImage());
 		
 		return view;
 	}
@@ -82,7 +93,26 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 
 	
 	private void setData() {
-		// TODO Auto-generated method stub
+		
+		ConfigModel configModel=new ConfigModel();
+		configModel=AppPreferenceManager.getConfigModel(context);
+		
+		ImagePrefixModel imagePrefixModel=new ImagePrefixModel();
+		imagePrefixModel=configModel.getImagePrefixModel();
+		
+		ArrayList<FeaturedModel> featuredModels=new ArrayList<FeaturedModel>();
+		featuredModels=configModel.getFeaturedModels();
+		for (int i = 0; i < featuredModels.size(); i++) {
+			
+			
+			System.out.println(""+imagePrefixModel.getImage_thumb_sm()+featuredModels.get(i).getImage());
+			imageLoader.displayImage(imagePrefixModel.getItem_image_path()+imagePrefixModel.getImage_thumb_sm()+featuredModels.get(i).getImage(),img[i],options);
+			
+			txt[i].setText(featuredModels.get(i).getName());
+			
+		}
+		
+		
 		
 	}
 	
@@ -96,6 +126,29 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		
 		//setIntializeSlider(getBtnLeft());
 		
+		
+		
+		img[0]=(ImageView)view.findViewById(R.id.img1);
+		img[1]=(ImageView)view.findViewById(R.id.img2);
+		img[2]=(ImageView)view.findViewById(R.id.img3);
+		img[3]=(ImageView)view.findViewById(R.id.img4);
+		img[4]=(ImageView)view.findViewById(R.id.img5);
+		img[5]=(ImageView)view.findViewById(R.id.img6);
+		img[6]=(ImageView)view.findViewById(R.id.img7);
+		img[7]=(ImageView)view.findViewById(R.id.img8);
+		img[8]=(ImageView)view.findViewById(R.id.img9);
+		
+		txt[0]=(TextView)view.findViewById(R.id.txt1);
+		txt[1]=(TextView)view.findViewById(R.id.txt2);
+		txt[2]=(TextView)view.findViewById(R.id.txt3);
+		txt[3]=(TextView)view.findViewById(R.id.txt4);
+		txt[4]=(TextView)view.findViewById(R.id.txt5);
+		txt[5]=(TextView)view.findViewById(R.id.txt6);
+		txt[6]=(TextView)view.findViewById(R.id.txt7);
+		txt[7]=(TextView)view.findViewById(R.id.txt8);
+		txt[8]=(TextView)view.findViewById(R.id.txt9);
+		
+		
 		linGrid1=(LinearLayout)view.findViewById(R.id.linGrid1);
 		linGrid2=(LinearLayout)view.findViewById(R.id.linGrid2);
 		linGrid3=(LinearLayout)view.findViewById(R.id.linGrid3);
@@ -107,8 +160,10 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		ViewUtils.setViewHeight(linGrid3, width);
 		
 		autoScrollViewPager=(AutoScrollViewPager)view.findViewById(R.id.view_pager);
+		circlePageIndicator=(CirclePageIndicator)view.findViewById(R.id.indicator);
 		
-		  imageIdList = new ArrayList<Integer>();
+		
+		/*imageIdList = new ArrayList<Integer>();
 	        imageIdList.add(R.drawable.banner1);
 	        imageIdList.add(R.drawable.banner2);
 	        imageIdList.add(R.drawable.banner3);
@@ -121,8 +176,8 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 	        autoScrollViewPager.startAutoScroll();
 	        
 	        
-		circlePageIndicator=(CirclePageIndicator)view.findViewById(R.id.indicator);
-		circlePageIndicator.setViewPager(autoScrollViewPager);
+	
+		circlePageIndicator.setViewPager(autoScrollViewPager);*/
 		
 	}
 

@@ -20,6 +20,7 @@
             <com.alkandros.minilnthebox.custom.autoscrollviewadapter.AutoScrollViewPager
                 android:id="@+id/view_pager"
                 android:layout_width="match_parent"
+                android:background="@drawable/bg_home_defaultpic"
                 android:layout_height="@dimen/home_banner_height" />
 
             <com.alkandros.minilnthebox.custom.viewpagerindicator.CirclePageIndicator
@@ -162,17 +163,17 @@
                         android:gravity="center" >
 
                         <ImageView
-                            android:id="@+id/img1"
+                            android:id="@+id/img2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/my_account" />
 
                         <TextView
-                            android:id="@+id/txt1"
+                            android:id="@+id/txt2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/img1"
+                            android:layout_below="@+id/img2"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
                             android:text="Item 2" />
@@ -186,17 +187,17 @@
                         android:gravity="center" >
 
                         <ImageView
-                            android:id="@+id/img1"
+                            android:id="@+id/img3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/my_account" />
 
                         <TextView
-                            android:id="@+id/txt1"
+                            android:id="@+id/txt3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/img1"
+                            android:layout_below="@+id/img3"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
                             android:text="Item 3" />
@@ -217,17 +218,17 @@
                         android:gravity="center" >
 
                         <ImageView
-                            android:id="@+id/img1"
+                            android:id="@+id/img4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/my_account" />
 
                         <TextView
-                            android:id="@+id/txt1"
+                            android:id="@+id/txt4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/img1"
+                            android:layout_below="@+id/img4"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
                             android:text="Item 4" />
@@ -241,17 +242,17 @@
                         android:gravity="center" >
 
                         <ImageView
-                            android:id="@+id/img1"
+                            android:id="@+id/img5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/my_account" />
 
                         <TextView
-                            android:id="@+id/txt1"
+                            android:id="@+id/txt5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/img1"
+                            android:layout_below="@+id/img5"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
                             android:text="Item 5" />
@@ -265,17 +266,17 @@
                         android:gravity="center" >
 
                         <ImageView
-                            android:id="@+id/img1"
+                            android:id="@+id/img6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/my_account" />
 
                         <TextView
-                            android:id="@+id/txt1"
+                            android:id="@+id/txt6"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/img1"
+                            android:layout_below="@+id/img6"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
                             android:text="Item 6" />
@@ -296,17 +297,17 @@
                         android:gravity="center" >
 
                         <ImageView
-                            android:id="@+id/img1"
+                            android:id="@+id/img7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/my_account" />
 
                         <TextView
-                            android:id="@+id/txt1"
+                            android:id="@+id/txt7"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/img1"
+                            android:layout_below="@+id/img7"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
                             android:text="Item 7" />
@@ -320,17 +321,17 @@
                         android:gravity="center" >
 
                         <ImageView
-                            android:id="@+id/img1"
+                            android:id="@+id/img8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/my_account" />
 
                         <TextView
-                            android:id="@+id/txt1"
+                            android:id="@+id/txt8"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/img1"
+                            android:layout_below="@+id/img8"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
                             android:text="Item 8" />
@@ -344,17 +345,17 @@
                         android:gravity="center" >
 
                         <ImageView
-                            android:id="@+id/img1"
+                            android:id="@+id/img9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/my_account" />
 
                         <TextView
-                            android:id="@+id/txt1"
+                            android:id="@+id/txt9"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/img1"
+                            android:layout_below="@+id/img9"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
                             android:text="Item 9" />
