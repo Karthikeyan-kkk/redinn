@@ -3,5 +3,7 @@
     
     
    <dimen name="home_banner_height">115dp</dimen>
+   
+   <dimen name="home_items">100dp</dimen>
     
 </resources>
