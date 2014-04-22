@@ -77,7 +77,7 @@ public class ApiManager {
 					
 				}
 				
-				
+				Utils.longInfo(response.toString());
 				apiResponseListner.dataDownloadedSuccessfully(response);
 				
 				

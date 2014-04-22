@@ -59,12 +59,18 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		context=getActivity();
 		
 		
+		
 		intialazeUI();
 		ClickListner();
+		setData();
 		
 		
 		return view;
 	}
+
+
+
+	
 
 
 
@@ -74,6 +80,11 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		
 	}
 
+	
+	private void setData() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 	private void intialazeUI() {
@@ -96,6 +107,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		ViewUtils.setViewHeight(linGrid3, width);
 		
 		autoScrollViewPager=(AutoScrollViewPager)view.findViewById(R.id.view_pager);
+		
 		  imageIdList = new ArrayList<Integer>();
 	        imageIdList.add(R.drawable.banner1);
 	        imageIdList.add(R.drawable.banner2);
