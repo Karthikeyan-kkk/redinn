@@ -106,14 +106,12 @@ public class Splash extends Activity {
 
 					// Set SlideShow Values
 					ArrayList<SlideShowModel> slideShowModels = new ArrayList<SlideShowModel>();
-					JSONObject j_slideShow = response
-							.getJSONObject(IJsonConstants.J_SlideShow);
-					JSONArray j_slideShows = j_slideShow
-							.getJSONArray(IJsonConstants.J_SlideShows);
+					JSONObject j_slideShows = response.getJSONObject(IJsonConstants.J_SlideShows);
+					JSONArray j_slideShow = j_slideShows.getJSONArray(IJsonConstants.J_SlideShow);
 
-					for (int i = 0; i < j_slideShows.length(); i++) {
+					for (int i = 0; i < j_slideShow.length(); i++) {
 
-						JSONObject jitem = j_Currencies.getJSONObject(i);
+						JSONObject jitem = j_slideShow.getJSONObject(i);
 						SlideShowModel showModel = new Gson().fromJson(
 								jitem.toString(), SlideShowModel.class);
 

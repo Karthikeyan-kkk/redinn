@@ -4,10 +4,15 @@ import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.custom.slidinglib.SlidingMenu;
 import com.alkandros.minilnthebox.manager.SelectorManager;
 import com.alkandros.minilnthebox.manager.SliderManager;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,11 +29,38 @@ public abstract  class BaseFragment extends Fragment {
 	public SliderManager slider;
 	public SlidingMenu slidingMenu;
 	
+
+	 protected ImageLoader imageLoader = ImageLoader.getInstance();
+	 
+	 protected DisplayImageOptions options;
+	 
+	 
+	 @Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			// TODO Auto-generated method stub
+			 
+			
+			return super.onCreateView(inflater, container, savedInstanceState);
+		}
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
 		
+		
+		options = new DisplayImageOptions.Builder()
+		.showImageOnLoading(R.drawable.cateloading)
+		.showImageForEmptyUri(R.drawable.errorimg)
+		.showImageOnFail(R.drawable.errorimg)
+		.cacheInMemory(true)
+		.cacheOnDisc(true)
+		.considerExifParams(true)
+		.bitmapConfig(Bitmap.Config.RGB_565)
+		.build();
+		
+		
+		super.onCreate(savedInstanceState);
 		
 	}
 
