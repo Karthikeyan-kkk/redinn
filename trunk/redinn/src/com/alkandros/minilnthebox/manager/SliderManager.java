@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.alkandros.minilnthebox.R;
+import com.alkandros.minilnthebox.adapter.SearchListAdapter;
+import com.alkandros.minilnthebox.adapter.SlideShowPagerAdapter;
 import com.alkandros.minilnthebox.custom.slidinglib.SlidingMenu;
 import com.alkandros.minilnthebox.model.SlideNavigationModel;
 import com.alkandros.minilnthebox.model.SlideShowModel;
@@ -51,7 +53,9 @@ public class SliderManager implements OnClickListener {
 	
 	private static SliderManager instance;
 	private Cursor contactCursor;
-	ArrayList<SlideNavigationModel> slideNavigationModels;
+	private ArrayList<SlideNavigationModel> slideNavigationModels;
+	
+	private SearchListAdapter searchListAdapter;
 	
 	public SliderManager(Context ctx,ArrayList<SlideNavigationModel> slideNavigationModels)
 	{
@@ -89,6 +93,17 @@ public class SliderManager implements OnClickListener {
 	private void clickListeners()
 	{
 		btnSearch.setOnClickListener(this);
+		
+		
+		lstSlideItems.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
+					long arg3) {
+				
+				
+			}
+		});
 	}
 	
 	public SlidingMenu initializeSlidingMenu(View slideButton) 
@@ -101,6 +116,8 @@ public class SliderManager implements OnClickListener {
 		slidingMenu.setBehindWidth((Utils.getDeviceWidth(context)/2)-(slideButton.getWidth()+20));
 		slidingMenu.attachToActivity((Activity) context, SlidingMenu.SLIDING_CONTENT);
 		slidingMenu.setMenu(view);
+		slidingMenu.setShadowDrawable(R.drawable.slidingmenu_shadow);
+		slidingMenu.setShadowWidth(25);
 		
 		return slidingMenu;
 	}
@@ -127,7 +144,13 @@ public class SliderManager implements OnClickListener {
 	}
 	
 	private void setData() {
-		// TODO Auto-generated method stub
+		ArrayList<SlideNavigationModel> slideNavigationModels=AppPreferenceManager.getConfigModel(context).getSlideNavigationModels();
+		
+		searchListAdapter=new SearchListAdapter(context,  slideNavigationModels);
+		
+		lstSlideItems.setAdapter(searchListAdapter);
+		
+		
 		
 	}
 	
