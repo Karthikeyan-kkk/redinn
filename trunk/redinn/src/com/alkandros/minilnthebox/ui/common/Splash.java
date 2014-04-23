@@ -134,7 +134,7 @@ public class Splash extends Activity {
 						JSONObject jitemObject = jitem.getJSONObject(IJsonConstants.J_Item);
 						FeaturedModel featuredModel = new Gson().fromJson(jitemObject.toString(), FeaturedModel.class);
 						
-						
+						/*
 						
 						JSONArray jpriceArray = jitem.getJSONArray(IJsonConstants.J_ItemPrice);
 						for (int j = 0; j < jpriceArray.length(); j++) {
@@ -150,7 +150,7 @@ public class Splash extends Activity {
 								
 							}
 							
-						}
+						}*/
 						
 						
 
@@ -180,6 +180,10 @@ public class Splash extends Activity {
 					//Set Slide Navigation Value..
 					
 					ArrayList<SlideNavigationModel> slideNavigationModels=new ArrayList<SlideNavigationModel>();
+					
+					
+					
+					
 					JSONObject SideNavigationTags = response.getJSONObject(IJsonConstants.J_SideNavigationTags);
 					
 					JSONObject Slide2 = SideNavigationTags.getJSONObject("2");
