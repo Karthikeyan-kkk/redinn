@@ -21,6 +21,7 @@ import com.alkandros.minilnthebox.model.ConfigModel;
 import com.alkandros.minilnthebox.model.CurrencyModel;
 import com.alkandros.minilnthebox.model.FeaturedModel;
 import com.alkandros.minilnthebox.model.ImagePrefixModel;
+import com.alkandros.minilnthebox.model.PriceModel;
 import com.alkandros.minilnthebox.model.SlideNavigationModel;
 import com.alkandros.minilnthebox.model.SlideShowModel;
 import com.alkandros.minilnthebox.ui.home.MainPageFragment;
@@ -120,6 +121,8 @@ public class Splash extends Activity {
 					}
 
 					configModel.setSlideShowModels(slideShowModels);
+					
+					
 
 					// Set Featured Value..
 					ArrayList<FeaturedModel> featuredModels = new ArrayList<FeaturedModel>();
@@ -128,10 +131,28 @@ public class Splash extends Activity {
 					for (int i = 0; i < j_Featured.length(); i++) {
 						JSONObject jitem = j_Featured.getJSONObject(i);
 
-						JSONObject jitemObject = jitem
-								.getJSONObject(IJsonConstants.J_Item);
-						FeaturedModel featuredModel = new Gson().fromJson(
-								jitemObject.toString(), FeaturedModel.class);
+						JSONObject jitemObject = jitem.getJSONObject(IJsonConstants.J_Item);
+						FeaturedModel featuredModel = new Gson().fromJson(jitemObject.toString(), FeaturedModel.class);
+						
+						
+						
+						JSONArray jpriceArray = jitem.getJSONArray(IJsonConstants.J_ItemPrice);
+						for (int j = 0; j < jpriceArray.length(); j++) {
+							
+							JSONObject jprice = jpriceArray.getJSONObject(i);
+							
+							if(currencyModel.getCurr_id()==jprice.getString(IJsonConstants.J_currency_id)){
+								
+								//PriceModel priceModel=new Gson().fromJson(jprice.toString(), PriceModel.class);
+								
+								//featuredModel.setPriceModel(priceModel);
+								break;
+								
+							}
+							
+						}
+						
+						
 
 						featuredModels.add(featuredModel);
 

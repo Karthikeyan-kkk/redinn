@@ -8,6 +8,11 @@ public class FeaturedModel implements Serializable{
 	private String image="";
 	private String description="";
 	private String name="";
+	
+
+  // private PriceModel priceModel=new PriceModel();
+    	 
+	
 	public String getId() {
 		return id;
 	}
@@ -32,6 +37,16 @@ public class FeaturedModel implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+	/*public PriceModel getPriceModel() {
+		return priceModel;
+	}
+	public void setPriceModel(PriceModel priceModel) {
+		this.priceModel = priceModel;
+	}*/
+	
+	
+	
+	
 	
 	
 	

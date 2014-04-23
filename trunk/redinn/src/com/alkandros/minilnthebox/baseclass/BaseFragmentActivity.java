@@ -43,7 +43,7 @@ public abstract  class BaseFragmentActivity extends FragmentActivity {
 		slider   		= new SliderManager(activity,AppPreferenceManager.getConfigModel(activity).getSlideNavigationModels());
 		slidingMenu		=slider.initializeSlidingMenu(v);
 		
-		
+		//System.out.println("CHK V= "+AppPreferenceManager.getConfigModel(activity).getFeaturedModels().get(0).getPriceModel().getPrice());
 	}
 	
 

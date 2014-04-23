@@ -13,6 +13,12 @@ public interface IJsonConstants {
 	public String J_Featured = "Featured";
 
 	public String J_Item = "Item";
+	
+	public String J_ItemPrice = "ItemPrice";
+	
+	public String J_currency_id = "currency_id";
+	
+	
 
 	public String J_Categories = "Categories";
 	
