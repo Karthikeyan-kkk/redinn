@@ -181,9 +181,19 @@ public class Splash extends Activity {
 					
 					ArrayList<SlideNavigationModel> slideNavigationModels=new ArrayList<SlideNavigationModel>();
 					
+					JSONArray j_slideNavigation = response
+							.getJSONArray(IJsonConstants.J_SideNavigationTags);
 					
+					for (int i = 0; i < j_slideNavigation.length(); i++) 
+					{
+						JSONObject SideNavigationTags = j_slideNavigation.getJSONObject(i);
 					
+						SlideNavigationModel slide = new Gson().fromJson(SideNavigationTags.toString(), SlideNavigationModel.class);
+						slideNavigationModels.add(slide);
+						
+					}
 					
+					/*
 					JSONObject SideNavigationTags = response.getJSONObject(IJsonConstants.J_SideNavigationTags);
 					
 					JSONObject Slide2 = SideNavigationTags.getJSONObject("2");
@@ -200,7 +210,7 @@ public class Splash extends Activity {
 					
 					JSONObject Slide5 = SideNavigationTags.getJSONObject("5");
 					SlideNavigationModel slideM5 = new Gson().fromJson(Slide5.toString(), SlideNavigationModel.class);
-					slideNavigationModels.add(slideM5);
+					slideNavigationModels.add(slideM5);*/
 					
 					
 					configModel.setSlideNavigationModels(slideNavigationModels);
