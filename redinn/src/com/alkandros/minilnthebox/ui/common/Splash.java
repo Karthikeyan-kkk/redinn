@@ -152,6 +152,11 @@ public class Splash extends Activity {
 
 					}
 					configModel.setCategoriesModels(categoriesModels);
+					
+					
+					
+					//Set Slide Navigation Value..
+					
 
 					AppPreferenceManager.saveConfigModel(context, configModel);
 

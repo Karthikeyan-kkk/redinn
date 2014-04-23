@@ -7,11 +7,19 @@
  */
 package com.alkandros.minilnthebox.adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.alkandros.minilnthebox.R;
+import com.alkandros.minilnthebox.manager.AppPreferenceManager;
+import com.alkandros.minilnthebox.model.SlideShowModel;
 import com.alkandros.minilnthebox.utils.ListUtils;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -26,12 +34,30 @@ import android.widget.ImageView.ScaleType;
  */
 public class ImagePagerAdapter extends PagerAdapter {
 
+	
+	protected ImageLoader imageLoader = ImageLoader.getInstance();
+	protected DisplayImageOptions options;
+	
     private Context       context;
-    private List<Integer> imageIdList;
+    ArrayList<SlideShowModel> imageIdList;
+    
+    String header;
 
-    public ImagePagerAdapter(Context context, List<Integer> imageIdList){
+    public ImagePagerAdapter(Context context, ArrayList<SlideShowModel> imageIdList){
         this.context = context;
         this.imageIdList = imageIdList;
+        
+        options = new DisplayImageOptions.Builder()
+		.showImageOnLoading(R.drawable.cateloading)
+		.showImageForEmptyUri(R.drawable.errorimg)
+		.showImageOnFail(R.drawable.errorimg)
+		.cacheInMemory(true)
+		.cacheOnDisc(true)
+		.considerExifParams(true)
+		.bitmapConfig(Bitmap.Config.RGB_565)
+		.build();
+        
+        header=AppPreferenceManager.getConfigModel(context).getImagePrefixModel().getSlide_show_path();
     }
 
     @Override
@@ -48,7 +74,10 @@ public class ImagePagerAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         ImageView imageView = new ImageView(context);
         imageView.setScaleType(ScaleType.FIT_XY);
-        imageView.setImageResource(imageIdList.get(position));
+      //  imageView.setImageResource(imageIdList.get(position));
+        
+        imageLoader.displayImage(header+imageIdList.get(position).getImage(), imageView,options);
+        
         ((ViewPager)container).addView(imageView, 0);
         return imageView;
     }

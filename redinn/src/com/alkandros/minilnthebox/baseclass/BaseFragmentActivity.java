@@ -2,6 +2,7 @@ package com.alkandros.minilnthebox.baseclass;
 
 import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.custom.slidinglib.SlidingMenu;
+import com.alkandros.minilnthebox.manager.AppPreferenceManager;
 import com.alkandros.minilnthebox.manager.SelectorManager;
 import com.alkandros.minilnthebox.manager.SliderManager;
 
@@ -39,7 +40,7 @@ public abstract  class BaseFragmentActivity extends FragmentActivity {
 
 	public void setIntializeSlider(View  v) {
 		
-		slider   		= new SliderManager(activity);
+		slider   		= new SliderManager(activity,AppPreferenceManager.getConfigModel(activity).getSlideNavigationModels());
 		slidingMenu		=slider.initializeSlidingMenu(v);
 		
 		
