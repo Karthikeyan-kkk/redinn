@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 
 import com.alkandros.minilnthebox.R;
-import com.alkandros.minilnthebox.adapter.ImagePagerAdapter;
+import com.alkandros.minilnthebox.adapter.SlideShowPagerAdapter;
 import com.alkandros.minilnthebox.baseclass.BaseFragment;
 import com.alkandros.minilnthebox.custom.autoscrollviewadapter.AutoScrollViewPager;
 import com.alkandros.minilnthebox.custom.slidinglib.SlidingMenu;
@@ -46,7 +46,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 	
 	private List<Integer>       imageIdList;
 	
-	private ImagePagerAdapter imagePagerAdapter;
+	private SlideShowPagerAdapter imagePagerAdapter;
 	private LinearLayout linGrid1;
 	private LinearLayout linGrid2;
 	private LinearLayout linGrid3;
@@ -122,7 +122,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		ArrayList<SlideShowModel> slideShowModels=new ArrayList<SlideShowModel>();
 		slideShowModels=configModel.getSlideShowModels();
 		
-		imagePagerAdapter=new ImagePagerAdapter(context, slideShowModels);
+		imagePagerAdapter=new SlideShowPagerAdapter(context, slideShowModels);
         autoScrollViewPager.setAdapter(imagePagerAdapter);
         
         autoScrollViewPager.setInterval(2000);

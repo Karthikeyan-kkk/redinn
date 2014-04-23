@@ -32,7 +32,7 @@ import android.widget.ImageView.ScaleType;
  * 
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2014-2-23
  */
-public class ImagePagerAdapter extends PagerAdapter {
+public class SlideShowPagerAdapter extends PagerAdapter {
 
 	
 	protected ImageLoader imageLoader = ImageLoader.getInstance();
@@ -43,7 +43,7 @@ public class ImagePagerAdapter extends PagerAdapter {
     
     String header;
 
-    public ImagePagerAdapter(Context context, ArrayList<SlideShowModel> imageIdList){
+    public SlideShowPagerAdapter(Context context, ArrayList<SlideShowModel> imageIdList){
         this.context = context;
         this.imageIdList = imageIdList;
         

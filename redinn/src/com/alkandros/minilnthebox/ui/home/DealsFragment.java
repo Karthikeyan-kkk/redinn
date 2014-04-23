@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 
 import com.alkandros.minilnthebox.R;
-import com.alkandros.minilnthebox.adapter.ImagePagerAdapter;
+import com.alkandros.minilnthebox.adapter.SlideShowPagerAdapter;
 import com.alkandros.minilnthebox.baseclass.BaseFragment;
 import com.alkandros.minilnthebox.custom.autoscrollviewadapter.AutoScrollViewPager;
 import com.alkandros.minilnthebox.custom.viewpagerindicator.CirclePageIndicator;
