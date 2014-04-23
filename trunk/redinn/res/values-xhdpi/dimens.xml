@@ -7,6 +7,6 @@
    
      <dimen name="home_banner_height">270dp</dimen>
     
-   <dimen name="home_items">230dp</dimen>
+   <dimen name="home_items">180dp</dimen>
     
 </resources>
