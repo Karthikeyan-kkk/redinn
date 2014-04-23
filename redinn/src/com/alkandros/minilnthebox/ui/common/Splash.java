@@ -21,6 +21,7 @@ import com.alkandros.minilnthebox.model.ConfigModel;
 import com.alkandros.minilnthebox.model.CurrencyModel;
 import com.alkandros.minilnthebox.model.FeaturedModel;
 import com.alkandros.minilnthebox.model.ImagePrefixModel;
+import com.alkandros.minilnthebox.model.SlideNavigationModel;
 import com.alkandros.minilnthebox.model.SlideShowModel;
 import com.alkandros.minilnthebox.ui.home.MainPageFragment;
 
@@ -61,7 +62,7 @@ public class Splash extends Activity {
 
 	private void callApi() {
 		apiManager = new ApiManager(IUrlConstants.GET_HOME_SETING, context,
-				true);
+				false);
 
 		apiManager.setApiResponseListener(new ApiResponseListner() {
 
@@ -156,6 +157,32 @@ public class Splash extends Activity {
 					
 					
 					//Set Slide Navigation Value..
+					
+					ArrayList<SlideNavigationModel> slideNavigationModels=new ArrayList<SlideNavigationModel>();
+					JSONObject SideNavigationTags = response.getJSONObject(IJsonConstants.J_SideNavigationTags);
+					
+					JSONObject Slide2 = SideNavigationTags.getJSONObject("2");
+					SlideNavigationModel slideM2 = new Gson().fromJson(Slide2.toString(), SlideNavigationModel.class);
+					slideNavigationModels.add(slideM2);
+					
+					JSONObject Slide3 = SideNavigationTags.getJSONObject("3");
+					SlideNavigationModel slideM3 = new Gson().fromJson(Slide3.toString(), SlideNavigationModel.class);
+					slideNavigationModels.add(slideM3);
+					
+					JSONObject Slide4 = SideNavigationTags.getJSONObject("4");
+					SlideNavigationModel slideM4 = new Gson().fromJson(Slide4.toString(), SlideNavigationModel.class);
+					slideNavigationModels.add(slideM4);
+					
+					JSONObject Slide5 = SideNavigationTags.getJSONObject("5");
+					SlideNavigationModel slideM5 = new Gson().fromJson(Slide5.toString(), SlideNavigationModel.class);
+					slideNavigationModels.add(slideM5);
+					
+					
+					configModel.setSlideNavigationModels(slideNavigationModels);
+					
+					
+					
+					
 					
 
 					AppPreferenceManager.saveConfigModel(context, configModel);
