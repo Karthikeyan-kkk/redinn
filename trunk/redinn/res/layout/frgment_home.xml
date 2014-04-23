@@ -152,6 +152,8 @@
                             android:layout_below="@+id/img1"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Item 1" />
                     </RelativeLayout>
 
@@ -176,6 +178,8 @@
                             android:layout_below="@+id/img2"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
+                           android:textColor="@color/black"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Item 2" />
                     </RelativeLayout>
 
@@ -200,6 +204,8 @@
                             android:layout_below="@+id/img3"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
+                           android:textColor="@color/black"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Item 3" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -231,6 +237,8 @@
                             android:layout_below="@+id/img4"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Item 4" />
                     </RelativeLayout>
 
@@ -255,6 +263,8 @@
                             android:layout_below="@+id/img5"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Item 5" />
                     </RelativeLayout>
 
@@ -279,6 +289,8 @@
                             android:layout_below="@+id/img6"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Item 6" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -310,6 +322,8 @@
                             android:layout_below="@+id/img7"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Item 7" />
                     </RelativeLayout>
 
@@ -334,6 +348,8 @@
                             android:layout_below="@+id/img8"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Item 8" />
                     </RelativeLayout>
 
@@ -358,6 +374,8 @@
                             android:layout_below="@+id/img9"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Item 9" />
                     </RelativeLayout>
                 </LinearLayout>

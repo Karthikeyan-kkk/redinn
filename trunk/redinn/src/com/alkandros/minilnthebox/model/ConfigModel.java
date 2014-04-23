@@ -14,7 +14,7 @@ public class ConfigModel implements Serializable {
 	private ArrayList<SlideShowModel> slideShowModels=new ArrayList<SlideShowModel>();
 	private ArrayList<FeaturedModel> featuredModels=new ArrayList<FeaturedModel>();
 	private ArrayList<CategoriesModel> categoriesModels=new ArrayList<CategoriesModel>();
-	
+	private ArrayList<SlideNavigationModel> slideNavigationModels=new ArrayList<SlideNavigationModel>();
 
 	public CurrencyModel getCurrencyModel() {
 		return currencyModel;
@@ -54,6 +54,15 @@ public class ConfigModel implements Serializable {
 
 	public void setCategoriesModels(ArrayList<CategoriesModel> categoriesModels) {
 		this.categoriesModels = categoriesModels;
+	}
+
+	public ArrayList<SlideNavigationModel> getSlideNavigationModels() {
+		return slideNavigationModels;
+	}
+
+	public void setSlideNavigationModels(
+			ArrayList<SlideNavigationModel> slideNavigationModels) {
+		this.slideNavigationModels = slideNavigationModels;
 	}
 	
 	

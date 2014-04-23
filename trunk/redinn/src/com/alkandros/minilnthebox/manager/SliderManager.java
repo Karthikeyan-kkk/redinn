@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.custom.slidinglib.SlidingMenu;
+import com.alkandros.minilnthebox.model.SlideNavigationModel;
+import com.alkandros.minilnthebox.model.SlideShowModel;
 import com.alkandros.minilnthebox.utils.Utils;
 
 import android.app.Activity;
@@ -24,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ViewFlipper;
 
 
@@ -42,22 +45,29 @@ public class SliderManager implements OnClickListener {
     GestureDetector detector;
     private static final int SWIPE_MIN_DISTANCE = 80;
 	private static final int SWIPE_THRESHOLD_VELOCITY = 150;
-	private Button btnNext;
-	private Button btnFinish;
+	private Button btnSearch;
+	private ListView lstSlideItems;
 	
 	
 	private static SliderManager instance;
 	private Cursor contactCursor;
+	ArrayList<SlideNavigationModel> slideNavigationModels;
 	
-	public SliderManager(Context ctx)
+	public SliderManager(Context ctx,ArrayList<SlideNavigationModel> slideNavigationModels)
 	{
 		context=ctx;
 	
 		instance = this;
+		this.slideNavigationModels=slideNavigationModels;
 		init();
+		clickListeners();
+		
+		setData();
+		
 		
 	
 	}
+	
 	public SliderManager() 
 	{
 			instance = this;
@@ -66,8 +76,8 @@ public class SliderManager implements OnClickListener {
 	{
 		layoutInflater  		= LayoutInflater.from(context);
 		view 					= layoutInflater.inflate(R.layout.slide_search_page, null);
-		
-	
+		btnSearch=(Button)view.findViewById(R.id.btnSearch);
+		lstSlideItems=(ListView)view.findViewById(R.id.lstSlideItems);
 	}
 	@SuppressWarnings({ "unused", "deprecation" })
 	private void clickManager()
@@ -78,7 +88,7 @@ public class SliderManager implements OnClickListener {
 	
 	private void clickListeners()
 	{
-		
+		btnSearch.setOnClickListener(this);
 	}
 	
 	public SlidingMenu initializeSlidingMenu(View slideButton) 
@@ -109,7 +119,14 @@ public class SliderManager implements OnClickListener {
 		//throw new RuntimeException("SliderManager not instantiated yet");
 	}
 	@Override
-	public void onClick(View arg0) {
+	public void onClick(View v) {
+		if(v==btnSearch){
+			//NotifyManager.showLongToast(context, ""+slideNavigationModels.size());
+		}
+		
+	}
+	
+	private void setData() {
 		// TODO Auto-generated method stub
 		
 	}

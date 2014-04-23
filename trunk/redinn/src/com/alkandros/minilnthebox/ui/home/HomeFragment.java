@@ -28,6 +28,7 @@ import com.alkandros.minilnthebox.manager.SliderManager;
 import com.alkandros.minilnthebox.model.ConfigModel;
 import com.alkandros.minilnthebox.model.FeaturedModel;
 import com.alkandros.minilnthebox.model.ImagePrefixModel;
+import com.alkandros.minilnthebox.model.SlideShowModel;
 import com.alkandros.minilnthebox.utils.Utils;
 import com.alkandros.minilnthebox.utils.ViewUtils;
 
@@ -97,9 +98,14 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		ConfigModel configModel=new ConfigModel();
 		configModel=AppPreferenceManager.getConfigModel(context);
 		
+		
+		
+		
 		ImagePrefixModel imagePrefixModel=new ImagePrefixModel();
 		imagePrefixModel=configModel.getImagePrefixModel();
 		
+		
+		//set Featured data
 		ArrayList<FeaturedModel> featuredModels=new ArrayList<FeaturedModel>();
 		featuredModels=configModel.getFeaturedModels();
 		for (int i = 0; i < featuredModels.size(); i++) {
@@ -112,7 +118,16 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 			
 		}
 		
+		//set Slideshow data
+		ArrayList<SlideShowModel> slideShowModels=new ArrayList<SlideShowModel>();
+		slideShowModels=configModel.getSlideShowModels();
 		
+		imagePagerAdapter=new ImagePagerAdapter(context, slideShowModels);
+        autoScrollViewPager.setAdapter(imagePagerAdapter);
+        
+        autoScrollViewPager.setInterval(2000);
+        autoScrollViewPager.startAutoScroll();
+        circlePageIndicator.setViewPager(autoScrollViewPager);
 		
 	}
 	

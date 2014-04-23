@@ -66,14 +66,14 @@ public abstract  class BaseFragment extends Fragment {
 
 	
 
-
+/*
 	public void setIntializeSlider(View  v) {
 		
 		slider   		= new SliderManager(getActivity());
 		slidingMenu		=slider.initializeSlidingMenu(v);
 		
 		
-	}
+	}*/
 	
 
 
