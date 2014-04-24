@@ -615,7 +615,7 @@ public class CustomViewAbove extends ViewGroup {
 		if (!mEnabled)
 			return false;
 
-		final int action = ev.getAction() & MotionEventCompat.ACTION_MASK;
+		final int action = ev.getAction() & MotionEvent.ACTION_MASK;
 
 		if (DEBUG)
 			if (action == MotionEvent.ACTION_DOWN)

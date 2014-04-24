@@ -3,6 +3,7 @@ package com.alkandros.minilnthebox.ui.home;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -25,6 +26,7 @@ import com.alkandros.minilnthebox.custom.slidinglib.SlidingMenu;
 import com.alkandros.minilnthebox.custom.viewpagerindicator.CirclePageIndicator;
 import com.alkandros.minilnthebox.manager.AppPreferenceManager;
 import com.alkandros.minilnthebox.manager.SliderManager;
+import com.alkandros.minilnthebox.model.CategoriesModel;
 import com.alkandros.minilnthebox.model.ConfigModel;
 import com.alkandros.minilnthebox.model.FeaturedModel;
 import com.alkandros.minilnthebox.model.ImagePrefixModel;
@@ -52,6 +54,8 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 	private LinearLayout linGrid3;
 	int width=0;
 	
+	private LinearLayout linCategories;
+	LayoutInflater inflaterCategories;
 	//private ImageView img1,img2,img3,img4,img5,img6,img7,img8,img9;
 	
 	//private TextView txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9;
@@ -128,6 +132,28 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
         autoScrollViewPager.setInterval(2000);
         autoScrollViewPager.startAutoScroll();
         circlePageIndicator.setViewPager(autoScrollViewPager);
+        
+        
+        
+        
+        //set Categories data..
+        
+        ArrayList<CategoriesModel> categoriesModels=configModel.getCategoriesModels();
+        
+        for (int i = 0; i < categoriesModels.size(); i++) {
+        	
+        	View convertView= mInflater.inflate(R.layout.layout_category_item, null);
+        	
+        	LinearLayout linearLayoutItem=(LinearLayout)convertView.findViewById(R.id.linItem);
+        	TextView txtItemName=(TextView)convertView.findViewById(R.id.txtItemName);
+        	ImageView imgItem=(ImageView)convertView.findViewById(R.id.imgItem);
+        	
+        	txtItemName.setText(categoriesModels.get(i).getName());
+        	imageLoader.displayImage(imagePrefixModel.getItem_image_path()+imagePrefixModel.getImage_thumb_md(), imgItem,options);
+        	
+        	linCategories.addView(convertView);
+			
+		}
 		
 	}
 	
@@ -176,6 +202,12 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		
 		autoScrollViewPager=(AutoScrollViewPager)view.findViewById(R.id.view_pager);
 		circlePageIndicator=(CirclePageIndicator)view.findViewById(R.id.indicator);
+		
+		
+		
+		linCategories=(LinearLayout)view.findViewById(R.id.linCategories);
+		
+		inflaterCategories = (LayoutInflater) getActivity()	.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 		
 		
 		/*imageIdList = new ArrayList<Integer>();
