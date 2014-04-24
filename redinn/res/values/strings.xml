@@ -22,5 +22,14 @@
     <string name="common_error_message">Cannot continue at this time. Please try again later.</string>
     <string name="connection_error_message">Please Check your connection and try again.</string>
      <string name="server_error_message">Server err.</string>
+     
+     
+     
+     
+     <!-- List Page -->
+     
+     <string name="Sort">Sort</string>
+     <string name="Refine">Refine</string>
+     
 
 </resources>
