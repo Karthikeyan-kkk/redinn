@@ -20,9 +20,10 @@ public abstract  class BaseFragmentActivity extends FragmentActivity {
 
 
 
-	public ImageView btnLeft;
-	public ImageView btnRight;
+	public ImageView leftIcon;
+	public ImageView rightIcon;
 	public TextView title;
+	private TextView txtcartCount;
 	
 	public SliderManager slider;
 	public SlidingMenu slidingMenu;
@@ -51,10 +52,10 @@ public abstract  class BaseFragmentActivity extends FragmentActivity {
 
 	public void setHeaderIntialize() {
 		
-		btnLeft=(ImageView)findViewById(R.id.leftIcon);
-		btnRight=(ImageView)findViewById(R.id.rightIcon);
+		leftIcon=(ImageView)findViewById(R.id.leftIcon);
+		rightIcon=(ImageView)findViewById(R.id.rightIcon);
 		title=(TextView)findViewById(R.id.title);
-		
+		txtcartCount=(TextView)findViewById(R.id.txtcartCount);
 		
 	}
 	
@@ -77,25 +78,25 @@ public abstract  class BaseFragmentActivity extends FragmentActivity {
 
 	public void setLeftSelector(int normal,int press) {
 			
-		SelectorManager.setBackground(btnLeft, SelectorManager.getButtonDrawableByScreenCathegory(activity, normal, press));
+		SelectorManager.setBackground(leftIcon, SelectorManager.getButtonDrawableByScreenCathegory(activity, normal, press));
 		
 	}
 	
 	public void setRightSelector(int normal,int press) {
 			
-		SelectorManager.setBackground(btnRight, SelectorManager.getButtonDrawableByScreenCathegory(activity, normal, press));
+		SelectorManager.setBackground(rightIcon, SelectorManager.getButtonDrawableByScreenCathegory(activity, normal, press));
 	}
 
 	
 	public ImageView getBtnLeft() {
 		
 		
-		return btnLeft;
+		return leftIcon;
 	}
 	
 	
 	public ImageView getBtnRight() {
-		return btnRight;
+		return rightIcon;
 	}
 	
 	public TextView getTitleView() {

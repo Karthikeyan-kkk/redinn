@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,6 +33,7 @@ import com.alkandros.minilnthebox.model.ConfigModel;
 import com.alkandros.minilnthebox.model.FeaturedModel;
 import com.alkandros.minilnthebox.model.ImagePrefixModel;
 import com.alkandros.minilnthebox.model.SlideShowModel;
+import com.alkandros.minilnthebox.ui.detail.DetailPageList;
 import com.alkandros.minilnthebox.utils.Utils;
 import com.alkandros.minilnthebox.utils.ViewUtils;
 
@@ -94,6 +97,9 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		//getBtnLeft().setOnClickListener(this);
 		//getBtnRight().setOnClickListener(this);
 		
+		
+		
+		
 	}
 
 	
@@ -143,13 +149,24 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
         for (int i = 0; i < categoriesModels.size(); i++) {
         	
         	View convertView= mInflater.inflate(R.layout.layout_category_item, null);
-        	
+        	FrameLayout frmClick =(FrameLayout)convertView.findViewById(R.id.frmClick);
         	LinearLayout linearLayoutItem=(LinearLayout)convertView.findViewById(R.id.linItem);
         	TextView txtItemName=(TextView)convertView.findViewById(R.id.txtItemName);
         	ImageView imgItem=(ImageView)convertView.findViewById(R.id.imgItem);
         	
         	txtItemName.setText(categoriesModels.get(i).getName());
         	imageLoader.displayImage(imagePrefixModel.getItem_image_path()+imagePrefixModel.getImage_thumb_md(), imgItem,options);
+        	
+        	frmClick.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+				intent =new Intent(context,DetailPageList.class);
+				startBaseActivity(intent);
+					
+				}
+			});
         	
         	linCategories.addView(convertView);
 			
