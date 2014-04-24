@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.R.layout;
 import com.alkandros.minilnthebox.R.menu;
+import com.alkandros.minilnthebox.baseclass.BaseActivity;
 import com.alkandros.minilnthebox.constants.IJsonConstants;
 import com.alkandros.minilnthebox.constants.IUrlConstants;
 import com.alkandros.minilnthebox.manager.ApiManager;
@@ -35,7 +36,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 
-public class Splash extends Activity {
+public class Splash extends BaseActivity {
 
 	private Context context;
 	private Intent i;
@@ -247,7 +248,7 @@ public class Splash extends Activity {
 			public void run() {
 
 				i = new Intent(context, MainPageFragment.class);
-				startActivity(i);
+				startBaseActivity(i);
 				finish();
 			}
 		}, SPLASH_DISPLAY_LENGTH);
