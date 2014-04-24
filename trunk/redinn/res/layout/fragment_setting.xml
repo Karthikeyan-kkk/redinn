@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bgcolor"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10.0dip" >
+
+            <LinearLayout
+                android:id="@+id/ll_setting"
+                android:layout_width="fill_parent"
+                android:layout_height="47.299988dip"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:id="@+id/textview_setting"
+                    
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:text="@string/Setting"
+                    android:textColor="@color/me_graylight"
+                    android:textSize="20.0sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/me_split_color" />
+
+            <LinearLayout
+                android:id="@+id/countryView"
+                android:layout_width="fill_parent"
+                android:layout_height="47.299988dip"
+                android:background="@color/white"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:id="@+id/country"
+                    
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:text="@string/Country"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/country_name"
+                    style="@style/usercentertextstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:gravity="right"
+                    android:text="@string/Country" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/me_split_color" />
+
+            <LinearLayout
+                android:id="@+id/languageview"
+                android:layout_width="fill_parent"
+                android:layout_height="47.299988dip"
+                android:background="@color/white"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:id="@+id/language"
+                       style="@style/usercentertextstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:text="@string/Language" />
+
+                <TextView
+                    android:id="@+id/language_name"
+                    style="@style/usercentertextstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:gravity="right"
+                    android:text="Language" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/me_split_color" />
+
+            <LinearLayout
+                android:id="@+id/currencyview"
+                android:layout_width="fill_parent"
+                android:layout_height="47.299988dip"
+                android:background="@color/white"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:id="@+id/currency"
+                       style="@style/usercentertextstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:text="@string/Currency" />
+
+                <TextView
+                    android:id="@+id/currency_name"
+                    style="@style/usercentertextstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:gravity="right"
+                    android:text="@string/Currency" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="47.299988dip"
+                android:layout_marginTop="10.0dip"
+                android:background="@color/white"
+                android:clickable="true"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:id="@+id/aboutusview"
+                    
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:text="@string/AboutUs"
+                    android:textColor="@color/me_graylight"
+                    android:textSize="20.0sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/me_split_color" />
+
+            <LinearLayout
+                android:id="@+id/returnpolicyview"
+                android:layout_width="fill_parent"
+                android:layout_height="47.299988dip"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:id="@+id/returnpolicy"
+                     style="@style/usercentertextstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:text="@string/ReturnPolicy" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/me_split_color" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="47.299988dip"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:id="@+id/privacy"
+                     style="@style/usercentertextstyle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:text="@string/PrivacyPolicy" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/me_split_color" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="47.299988dip"
+                android:background="@color/white"
+                android:clickable="true"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:id="@+id/termsofuse"
+                     style="@style/usercentertextstyle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:text="@string/TermsofUse" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/me_split_color" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="47.299988dip"
+                android:background="@color/white"
+                android:clickable="true"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:id="@+id/payment"
+                     style="@style/usercentertextstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:text="@string/Payment" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/me_split_color" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="47.299988dip"
+                android:background="@color/white"
+                android:clickable="true"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:id="@+id/shipping"
+                     style="@style/usercentertextstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:text="@string/Shipping" />
+            </LinearLayout>
+
+           
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
