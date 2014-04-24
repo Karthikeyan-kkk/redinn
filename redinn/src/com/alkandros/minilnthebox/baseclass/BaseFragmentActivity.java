@@ -7,6 +7,7 @@ import com.alkandros.minilnthebox.manager.SelectorManager;
 import com.alkandros.minilnthebox.manager.SliderManager;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -101,6 +102,30 @@ public abstract  class BaseFragmentActivity extends FragmentActivity {
 		return title;
 	}
 	
+	
+
+	public void startBaseActivityForResult(Intent i, int requestCode){
+		
+		
+		this.startActivityForResult(i, requestCode);
+		overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		this.overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+		
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		
+		this.overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+	}
     
     
 	
