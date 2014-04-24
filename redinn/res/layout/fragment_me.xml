@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bgcolor"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="none" >
+
+        <LinearLayout
+            style="@style/vllff"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/rl_myorder"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginRight="5.0dip"
+                    android:layout_marginTop="5.0dip"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/my_center_bg" >
+
+                    <ImageView
+                        android:id="@+id/imageview_myorder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/myorder_button" />
+
+                    <TextView
+                        android:id="@+id/myorder"
+                        style="@style/MeTextStyle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/MyOrders"
+                        android:layout_below="@+id/imageview_myorder"
+                        android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_myfav"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginRight="5.0dip"
+                    android:layout_marginTop="5.0dip"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/my_center_bg" >
+
+                    <ImageView
+                        android:id="@+id/imageview_myfav"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/myfavorite_button" />
+
+                    <TextView
+                        android:id="@+id/myfav"
+                        style="@style/MeTextStyle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/MyFavorites"
+                        android:layout_below="@+id/imageview_myfav" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5.0dip" >
+
+                <RelativeLayout
+                    android:id="@+id/rl_myaddress"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginRight="5.0dip"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/my_center_bg" >
+
+                    <ImageView
+                        android:id="@+id/imageview_myaddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/ddress_book_button" />
+
+                    <TextView
+                        android:id="@+id/myaddress"
+                        style="@style/MeTextStyle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/AddressBook"
+                        android:layout_below="@+id/imageview_myaddress" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_myaccount"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginRight="5.0dip"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/my_center_bg" >
+
+                    <ImageView
+                        android:id="@+id/imageview_myaccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/myaccount_button" />
+
+                    <TextView
+                        android:id="@+id/myaccount"
+                        style="@style/MeTextStyle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/MyAccount"
+                        android:layout_below="@+id/imageview_myaccount" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10.0dip"
+                android:background="@drawable/log_out_button"
+                android:gravity="center"
+                android:text="@string/signin"
+                android:textColor="#ff000000"
+                android:textSize="14.0sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

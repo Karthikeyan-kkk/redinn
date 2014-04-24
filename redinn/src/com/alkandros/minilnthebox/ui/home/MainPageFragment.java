@@ -24,6 +24,8 @@ public class MainPageFragment extends BaseFragmentActivity implements
 	
 	private HomeFragment homeFragment=null;
 	private DealsFragment dealsFragment=null;
+	private SettingsFragment settingFragment=null;
+	private MeFragment meFragment=null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -96,18 +98,18 @@ public class MainPageFragment extends BaseFragmentActivity implements
 			changeFragment(dealsFragment);
 
 		} else if (v == tab4) {
-			if(dealsFragment==null){
-				dealsFragment=new DealsFragment();
+			if(meFragment==null){
+				meFragment=new MeFragment();
 			}
 			setTitle("Me");
-			changeFragment(dealsFragment);
+			changeFragment(meFragment);
 
 		} else if (v == tab5) {
-			if(dealsFragment==null){
-				dealsFragment=new DealsFragment();
+			if(settingFragment==null){
+				settingFragment=new SettingsFragment();
 			}
 			setTitle("Setting");
-			changeFragment(dealsFragment);
+			changeFragment(settingFragment);
 
 		}
 		

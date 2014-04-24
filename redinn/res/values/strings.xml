@@ -31,5 +31,30 @@
      <string name="Sort">Sort</string>
      <string name="Refine">Refine</string>
      
+     
+      <!-- Setting  Page -->
+     
+     <string name="Setting">Setting</string>
+     <string name="Country">Country</string>
+       <string name="Language">Language</string>
+       <string name="Currency">Currency</string>
+       <string name="AboutUs">About us</string>
+       <string name="ReturnPolicy">Return Policy</string>
+       <string name="PrivacyPolicy">Privacy Policy</string>
+       <string name="TermsofUse">Terms of Use</string>
+       <string name="Payment">Payment</string>
+       <string name="Shipping">Shipping</string>
+       
+          <!-- Me  Page -->
+          <string name="Me">Me</string>
+       <string name="MyAccount">My Account</string>
+        <string name="MyOrders">My Orders</string>
+    <string name="MyFavorites">My Favorites</string>
+    <string name="AddressBook">Address Book</string>
+    
+    <string name="signin">Sign In</string>
+    
+    <string name="logout">Log Out</string>
+     
 
 </resources>
