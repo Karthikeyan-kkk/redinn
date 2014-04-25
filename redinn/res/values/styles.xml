@@ -88,4 +88,12 @@
         <item name="android:paddingRight">5.0dip</item>
         <item name="android:singleLine">true</item>
     </style>
+    
+    <style name="MyFavRatingBarSmall" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/myfav_rating_bar_smla</item>
+        <item name="android:minHeight">10.0dip</item>
+        <item name="android:numStars">5</item>
+        <item name="android:isIndicator">true</item>
+        <item name="android:inputType">number</item>
+    </style>
 </resources>

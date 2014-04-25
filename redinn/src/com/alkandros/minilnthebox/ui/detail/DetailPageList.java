@@ -3,6 +3,7 @@ package com.alkandros.minilnthebox.ui.detail;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +17,8 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 
 	private TextView txtSort;
 	private TextView txtRefine;
+	
+	private GridView gridList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,8 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 		imgViewChange = (ImageView) findViewById(R.id.imgViewChange);
 		txtSort = (TextView) findViewById(R.id.txtSort);
 		txtRefine = (TextView) findViewById(R.id.txtRefine);
-
+		gridList=(GridView)findViewById(R.id.gridList);
+		
 	}
 
 	private void clickListner() {
