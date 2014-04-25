@@ -11,10 +11,11 @@
 
         <FrameLayout
             android:id="@+id/baby_list_image_vg"
-            android:layout_width="fill_parent"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true" 
-            android:layout_toLeftOf="@+id/view">
+              android:background="@color/white"
+            >
 
             <com.alkandros.asyncimage.AsyncImageView
 
@@ -52,7 +53,7 @@
             android:id="@+id/view"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            
+            android:layout_toRightOf="@+id/baby_list_image_vg"
             android:background="@color/white"
             android:orientation="vertical" >
 
