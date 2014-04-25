@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
 
@@ -20,10 +21,19 @@
             <com.alkandros.asyncimage.AsyncImageView
 
                 android:id="@+id/baby_list_image"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:background="#ffe5e5e5"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitCenter" 
+                 app:asyncimage_bitmapconfig="RGB565"
+       	 app:asyncimage_progressbar="@+id/progressBar"
+                
+                />
+             <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 
             <LinearLayout
                 android:id="@+id/mailview"
