@@ -113,7 +113,7 @@ public class SliderManager implements OnClickListener {
 		slidingMenu = new SlidingMenu(context);
 		slidingMenu.setMode(SlidingMenu.LEFT);
 		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-		slidingMenu.setBehindWidth((Utils.getDeviceWidth(context)/2)-(slideButton.getWidth()+20));
+		slidingMenu.setBehindWidth((Utils.getDeviceWidth(context))-(slideButton.getWidth()+70));
 		slidingMenu.attachToActivity((Activity) context, SlidingMenu.SLIDING_CONTENT);
 		slidingMenu.setMenu(view);
 		slidingMenu.setShadowDrawable(R.drawable.slidingmenu_shadow);
