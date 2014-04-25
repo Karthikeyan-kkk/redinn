@@ -2,6 +2,7 @@ package com.alkandros.minilnthebox.adapter;
 
 import java.util.ArrayList;
 
+import com.alkandros.asyncimage.AsyncImageView;
 import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.manager.AppPreferenceManager;
 import com.alkandros.minilnthebox.model.ImagePrefixModel;
@@ -43,16 +44,6 @@ public class MultipleListAdapter extends ArrayAdapter<TestModel> {
 
 		this.context = context;
 		
-		options = new DisplayImageOptions.Builder()
-		.showImageOnLoading(R.drawable.cateloading)
-		.showImageForEmptyUri(R.drawable.errorimg)
-		.showImageOnFail(R.drawable.errorimg)
-		.cacheInMemory(true)
-		.cacheOnDisc(true)
-		.considerExifParams(true)
-		.bitmapConfig(Bitmap.Config.RGB_565)
-		.build();
-		
 		ImagePrefixModel tempImagePrefixModel=AppPreferenceManager.getConfigModel(context).getImagePrefixModel();
 		
 		imgHeader=tempImagePrefixModel.getItem_image_path()+tempImagePrefixModel.getImage_thumb_sm();
@@ -69,19 +60,23 @@ public class MultipleListAdapter extends ArrayAdapter<TestModel> {
 		LayoutInflater mInflater = (LayoutInflater) context
 				.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.search_item, null);
+			
+			if(VIEW_TYPE==0){
+			convertView = mInflater.inflate(R.layout.itemlist_small, null);
+			}else {
+			convertView = mInflater.inflate(R.layout.itemlist_large, null);
+			}
 			holder = new ViewHolder();
 
 			
 
-			holder.img = (ImageView) convertView
-					.findViewById(R.id.img);
+			holder.baby_list_image = (AsyncImageView) convertView
+					.findViewById(R.id.baby_list_image);
 
-			holder.txtName = (TextView) convertView
-					.findViewById(R.id.txtName);
 			
-			holder.txtCount = (TextView) convertView
-					.findViewById(R.id.txtcount);
+			
+			holder.baby_list_currency = (TextView) convertView
+					.findViewById(R.id.baby_list_currency);
 
 			
 
@@ -93,9 +88,9 @@ public class MultipleListAdapter extends ArrayAdapter<TestModel> {
 
 		
 		
-		imageLoader.displayImage(imgHeader+rowItem.getImage(), holder.img,options);
-		holder.txtName.setText(rowItem.getName());
-		holder.txtCount.setText("("+rowItem.getCount()+")");
+		holder.baby_list_image.setUrl(rowItem.getImage());
+	
+		holder.baby_list_currency.setText("("+rowItem.getName()+")");
 		
 		
 		
@@ -105,12 +100,12 @@ public class MultipleListAdapter extends ArrayAdapter<TestModel> {
 		return convertView;
 	}
 	
-	private int getViewType(){
+	public int getViewType(){
 		
 		return VIEW_TYPE;
 	}
 	
-	private void setViewType(int viewType){
+	public  void setViewType(int viewType){
 		VIEW_TYPE =viewType;
 		
 	}
@@ -118,11 +113,11 @@ public class MultipleListAdapter extends ArrayAdapter<TestModel> {
 	/* private view holder class */
 	private class ViewHolder {
 
-		ImageView img;
+		AsyncImageView baby_list_image;
 
-		TextView txtCount;
+		TextView baby_list_currency;
 
-		TextView txtName;
+	
 
 	}
 
