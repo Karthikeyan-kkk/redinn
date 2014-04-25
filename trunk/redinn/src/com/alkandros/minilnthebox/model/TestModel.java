@@ -14,6 +14,12 @@ public class TestModel implements Serializable{
 	private String rating="";
 	
 	private String desc="";
+	
+	
+	public TestModel(String name,String image) {
+		this.name=name;
+		this.image=image;
+	}
 
 	public String getName() {
 		return name;
