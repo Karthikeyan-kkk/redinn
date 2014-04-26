@@ -9,7 +9,7 @@ public interface IUrlConstants {
 	public String GET_HOME_SETING = HEADER+"/MobileServices/GetHomeSettings";
 	
 	
-	public String GET_ITEM = HEADER+"MobileServices/GetItem/";
+	public String GET_ITEM = HEADER+"/MobileServices/GetItem/";
 	
 	
 	

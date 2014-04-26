@@ -15,8 +15,13 @@ public interface IJsonConstants {
 	public String J_Item = "Item";
 	
 	public String J_ItemPrice = "ItemPrice";
+
+	public String J_Currency = "Currency";
+	
 	
 	public String J_currency_id = "currency_id";
+	
+	
 	
 	
 
@@ -27,5 +32,45 @@ public interface IJsonConstants {
 	
 
 	public String J_default = "default";
+	
+	public String J_Collection = "Collection";
+	
+	
+	public String J_Category = "Category";
+	
+	public String J_Label = "Label";
+	
+	public String J_ItemOptionTag = "ItemOptionTag";
+	
+	public String J_Option = "Option";
+	
+	public String J_Tag = "Tag";
+	
+	
+	
+	
+	
+	public String J_ItemSizeColor = "ItemSizeColor";
+	
+	public String J_ItemImage= "ItemImage";
+	
+	public String J_Size= "Size";
+	
+	public String J_Color= "Color";
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

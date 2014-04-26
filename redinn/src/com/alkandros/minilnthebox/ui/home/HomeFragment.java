@@ -33,6 +33,7 @@ import com.alkandros.minilnthebox.model.ConfigModel;
 import com.alkandros.minilnthebox.model.FeaturedModel;
 import com.alkandros.minilnthebox.model.ImagePrefixModel;
 import com.alkandros.minilnthebox.model.SlideShowModel;
+import com.alkandros.minilnthebox.ui.detail.DetailPage;
 import com.alkandros.minilnthebox.ui.detail.DetailPageList;
 import com.alkandros.minilnthebox.utils.Utils;
 import com.alkandros.minilnthebox.utils.ViewUtils;
@@ -64,6 +65,8 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 	//private TextView txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9;
 	private ImageView img[]=new ImageView[9];
 	private TextView txt[]=new TextView[9];
+	
+	private FrameLayout frm[]=new FrameLayout[9];
 	
 	
 	
@@ -125,6 +128,20 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 			imageLoader.displayImage(imagePrefixModel.getItem_image_path()+imagePrefixModel.getImage_thumb_sm()+featuredModels.get(i).getImage(),img[i],options);
 			
 			txt[i].setText(featuredModels.get(i).getName());
+			frm[i].setTag(featuredModels.get(i).getId());
+			
+			frm[i].setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+				
+					intent=new  Intent(context,DetailPage.class);
+					intent.putExtra("ID", v.getTag().toString());
+					
+					startBaseActivity(intent);
+					
+				}
+			});
 			
 		}
 		
@@ -205,6 +222,17 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		txt[6]=(TextView)view.findViewById(R.id.txt7);
 		txt[7]=(TextView)view.findViewById(R.id.txt8);
 		txt[8]=(TextView)view.findViewById(R.id.txt9);
+		
+		
+		frm[0]=(FrameLayout)view.findViewById(R.id.frm1);
+		frm[1]=(FrameLayout)view.findViewById(R.id.frm2);
+		frm[2]=(FrameLayout)view.findViewById(R.id.frm3);
+		frm[3]=(FrameLayout)view.findViewById(R.id.frm4);
+		frm[4]=(FrameLayout)view.findViewById(R.id.frm5);
+		frm[5]=(FrameLayout)view.findViewById(R.id.frm6);
+		frm[6]=(FrameLayout)view.findViewById(R.id.frm7);
+		frm[7]=(FrameLayout)view.findViewById(R.id.frm8);
+		frm[8]=(FrameLayout)view.findViewById(R.id.frm9);
 		
 		
 		linGrid1=(LinearLayout)view.findViewById(R.id.linGrid1);
