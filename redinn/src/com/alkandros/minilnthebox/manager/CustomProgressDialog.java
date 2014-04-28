@@ -35,8 +35,8 @@ public class CustomProgressDialog extends Dialog {
         /* The next line will add the ProgressBar to the dialog. */
         //dialog.addContentView(new ProgressBar(context), new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)); 
         View v=LayoutInflater.from(context).inflate(R.layout.progress_layout, null);
-        loadingTxt = (TextView) v.findViewById(R.id.textView1);
-        image = (ImageView) v.findViewById(R.id.img_group_image);
+      //  loadingTxt = (TextView) v.findViewById(R.id.textView1);
+      //  image = (ImageView) v.findViewById(R.id.img_group_image);
         dialog.addContentView(v, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));    
         return dialog;
     }

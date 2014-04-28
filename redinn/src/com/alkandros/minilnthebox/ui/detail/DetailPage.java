@@ -6,18 +6,33 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.alkandros.minilnthebox.R;
+import com.alkandros.minilnthebox.adapter.GalleryPagerAdapter;
+import com.alkandros.minilnthebox.adapter.SlideShowPagerAdapter;
 import com.alkandros.minilnthebox.baseclass.BaseActivity;
+import com.alkandros.minilnthebox.baseclass.MyApplication;
 import com.alkandros.minilnthebox.constants.IJsonConstants;
 import com.alkandros.minilnthebox.constants.IUrlConstants;
+import com.alkandros.minilnthebox.custom.autoscrollviewadapter.AutoScrollViewPager;
 import com.alkandros.minilnthebox.manager.ApiManager;
 import com.alkandros.minilnthebox.manager.ApiServicesManager;
+import com.alkandros.minilnthebox.manager.AppPreferenceManager;
 import com.alkandros.minilnthebox.manager.ApiManager.ApiResponseListner;
 import com.alkandros.minilnthebox.model.CategoryModel;
 import com.alkandros.minilnthebox.model.CollectionModel;
 import com.alkandros.minilnthebox.model.ColorModel;
+import com.alkandros.minilnthebox.model.ConfigModel;
 import com.alkandros.minilnthebox.model.GetItemModel;
 import com.alkandros.minilnthebox.model.ItemImageModel;
 import com.alkandros.minilnthebox.model.ItemModel;
@@ -27,17 +42,47 @@ import com.alkandros.minilnthebox.model.LabelModel;
 import com.alkandros.minilnthebox.model.OptionModel;
 import com.alkandros.minilnthebox.model.PriceModel;
 import com.alkandros.minilnthebox.model.SizeModel;
+import com.alkandros.minilnthebox.model.SlideShowModel;
 import com.alkandros.minilnthebox.model.TagModel;
+import com.alkandros.minilnthebox.utils.Utils;
+import com.alkandros.minilnthebox.utils.ViewUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-public class DetailPage extends BaseActivity implements IUrlConstants{
+public class DetailPage extends BaseActivity implements IUrlConstants ,OnClickListener{
 	
 	
-	ApiManager apiManager;
+	private ApiManager apiManager;
 	
 	private Bundle extras;
 	String id;
+	
+	
+	private AutoScrollViewPager autoScrollViewPager;
+	
+	private GalleryPagerAdapter galleryPagerAdapter;
+	
+	 private GetItemModel getItemModel=new GetItemModel();
+	 
+	 
+	 
+	 //..
+	 private RelativeLayout relSpecification;
+	 private TextView txtName;
+	 
+	 private RelativeLayout relPriceReview;
+	 private TextView txtPriceNormal;
+	 private TextView txtPriceOff;
+	 private RatingBar ratingreview;
+	 private TextView txtrating_count;
+	  
+	  
+	 private LinearLayout layout_favorite_count;
+	 private TextView txt_detail_favorite_count;
+	 private LinearLayout  layout_detail_share;
+	 private ImageView img_detail_share;
+	 private TextView txtAddtoCart;
+	  
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +99,16 @@ public class DetailPage extends BaseActivity implements IUrlConstants{
 		}
 		
 		intializeUI();
-		setData();
+		clickListner();
+		callGetItemApi(id);
+		
+	}
+
+	private void clickListner() {
+	
+		
+		relSpecification.setOnClickListener(this);
+		getBtnLeft().setOnClickListener(this);
 	}
 
 	private void intializeUI() {
@@ -62,24 +116,77 @@ public class DetailPage extends BaseActivity implements IUrlConstants{
 		setLeftSelector(R.drawable.left_arrow, R.drawable.left_arrow);
 		setRightSelector(R.drawable.button_2_hover, R.drawable.button_2_hover);
 		//setHeaderImg(R.drawable.header_logo);
-		setHeaderTitle("Sample");
+		
 		
 	
+		autoScrollViewPager=(AutoScrollViewPager)findViewById(R.id.view_pager);
 		
+		ViewUtils.setViewHeight(autoScrollViewPager, (Utils.getDeviceHeight(activity)/2)-50);
+		
+		 relSpecification =(RelativeLayout)findViewById(R.id.relSpecification);
+		 txtName=(TextView)findViewById(R.id.txtName);
+		 
+		 relPriceReview =(RelativeLayout)findViewById(R.id.relPriceReview);
+		 txtPriceNormal=(TextView)findViewById(R.id.txtPriceNormal);
+		 txtPriceOff=(TextView)findViewById(R.id.txtPriceOff);
+		 ratingreview=(RatingBar)findViewById(R.id.ratingreview);
+		 txtrating_count=(TextView)findViewById(R.id.txtrating_count);
+		 
+		 layout_favorite_count=(LinearLayout)findViewById(R.id.layout_favorite_count);
+		 txt_detail_favorite_count=(TextView)findViewById(R.id.txt_detail_favorite_count);
+		 layout_detail_share=(LinearLayout)findViewById(R.id.layout_detail_share);
+		 img_detail_share=(ImageView)findViewById(R.id.img_detail_share);
+		 txtAddtoCart=(TextView)findViewById(R.id.txtAddtoCart);
 		
 	}
 
 	private void setData() {
 		
+		final MyApplication myApplication=(MyApplication)getApplicationContext();
+		ConfigModel configModel=myApplication.getConfigModel();
 		
 		
-		callGetItemApi(id);
+		ItemModel itemModel=getItemModel.getItemModel();
+		
+		
+		if(itemModel!=null){
+		//set Title..
+		setHeaderTitle(itemModel.getPage_title());
+		
+		
+		//set Data values
+		txtName.setText(itemModel.getName());    
+		
+		
+		
+		}
+		
+		
+		//set Price..
+		PriceModel priceModel=getItemModel.getPriceModel();
+		
+		
+		if(priceModel!=null){
+			txtPriceNormal.setText(configModel.getCurrencyModel().getSymbol()+" "+priceModel.getPrice());
+		}
+		
+		
+		
+		
+		//Set Gallery Image.
+		galleryPagerAdapter=new GalleryPagerAdapter(activity, getItemModel.getItemImageModels());
+		autoScrollViewPager.setAdapter(galleryPagerAdapter);
+		
+		
+		
+		
+		
 		
 	}
 	
 	private void callGetItemApi(String id) {
 		
-		 final GetItemModel getItemModel=new GetItemModel();
+		
 			
 			apiManager = new ApiManager(IUrlConstants.GET_ITEM+id, activity,
 					true);
@@ -234,7 +341,11 @@ public class DetailPage extends BaseActivity implements IUrlConstants{
 						e.printStackTrace();
 					}
 					
-					System.out.println("ITEm== "+getItemModel.getPriceModel().getPrice());
+					
+					
+					
+					
+					setData();
 					
 				}
 				
@@ -245,6 +356,20 @@ public class DetailPage extends BaseActivity implements IUrlConstants{
 				}
 			});
 			
+		
+	}
+
+	@Override
+	public void onClick(View v) {
+		if(v==relSpecification){
+			intent =new Intent(activity,SpecificationPage.class);
+			intent.putExtra("DATA", getItemModel);
+			
+			startBaseActivity(intent);
+		}
+		else if(getBtnLeft()==v){
+			finishActivity();
+		}
 		
 	}
 

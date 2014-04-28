@@ -10,6 +10,7 @@ import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.R.layout;
 import com.alkandros.minilnthebox.R.menu;
 import com.alkandros.minilnthebox.baseclass.BaseActivity;
+import com.alkandros.minilnthebox.baseclass.MyApplication;
 import com.alkandros.minilnthebox.constants.IJsonConstants;
 import com.alkandros.minilnthebox.constants.IUrlConstants;
 import com.alkandros.minilnthebox.manager.ApiManager;
@@ -222,6 +223,13 @@ public class Splash extends BaseActivity {
 					
 
 					AppPreferenceManager.saveConfigModel(context, configModel);
+					
+					
+					
+					
+					final MyApplication myApplication=(MyApplication)getApplicationContext();
+					
+					myApplication.setConfigModel(configModel);
 
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
