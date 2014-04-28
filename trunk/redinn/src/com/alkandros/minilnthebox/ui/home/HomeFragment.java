@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.adapter.SlideShowPagerAdapter;
 import com.alkandros.minilnthebox.baseclass.BaseFragment;
+import com.alkandros.minilnthebox.baseclass.MyApplication;
 import com.alkandros.minilnthebox.custom.autoscrollviewadapter.AutoScrollViewPager;
 import com.alkandros.minilnthebox.custom.slidinglib.SlidingMenu;
 import com.alkandros.minilnthebox.custom.viewpagerindicator.CirclePageIndicator;
@@ -108,8 +109,10 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 	
 	private void setData() {
 		
+		
+		final MyApplication myApplication=(MyApplication)context.getApplicationContext();
 		ConfigModel configModel=new ConfigModel();
-		configModel=AppPreferenceManager.getConfigModel(context);
+		configModel=myApplication.getConfigModel();
 		
 		
 		

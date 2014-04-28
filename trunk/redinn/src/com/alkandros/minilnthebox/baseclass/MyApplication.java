@@ -3,6 +3,7 @@ package com.alkandros.minilnthebox.baseclass;
 
 import java.io.File;
 
+import com.alkandros.minilnthebox.model.ConfigModel;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
@@ -19,6 +20,11 @@ import android.content.Context;
 import android.graphics.Bitmap.CompressFormat;
 
 public class MyApplication extends Application{
+	
+	
+	
+	
+	private ConfigModel configModel;
 	
 	@Override
 	public void onCreate() {
@@ -73,6 +79,16 @@ public class MyApplication extends Application{
 		 // Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config);
 }
+
+
+	public ConfigModel getConfigModel() {
+		return configModel;
+	}
+
+
+	public void setConfigModel(ConfigModel configModel) {
+		this.configModel = configModel;
+	}
 	
 	 
 	 
