@@ -55,6 +55,14 @@
     <string name="signin">Sign In</string>
     
     <string name="logout">Log Out</string>
-     
+    
+    <!--Specification PAge  -->
+    
+    <string name="specifications">Specifications</string>
+    
+    <!-- Detail PAge -->
+    <string name="AddToCart">Add to Cart</string>
+     <string name="Shipsinhours">Ships in 24 hours</string>
+     <string name="FreeShipping">Free Shipping</string>
 
 </resources>
