@@ -33,6 +33,7 @@
         </activity>
         
         <activity android:name="com.alkandros.minilnthebox.ui.home.MainPageFragment"></activity>
+        <activity android:name="com.alkandros.minilnthebox.ui.detail.SpecificationPage"></activity>
         
         <activity android:name="com.alkandros.minilnthebox.ui.detail.DetailPageList"></activity>
          <activity android:name="com.alkandros.minilnthebox.ui.detail.DetailPage"></activity>
