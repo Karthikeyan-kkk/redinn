@@ -2,6 +2,8 @@ package com.alkandros.minilnthebox.ui.detail;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang3.StringUtils;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,7 +17,9 @@ import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.baseclass.BaseActivity;
 import com.alkandros.minilnthebox.model.ColorModel;
 import com.alkandros.minilnthebox.model.GetItemModel;
+import com.alkandros.minilnthebox.model.ItemOptionTagModel;
 import com.alkandros.minilnthebox.model.ItemSizeColorModel;
+import com.alkandros.minilnthebox.model.OptionTagValueModel;
 import com.alkandros.minilnthebox.model.SizeModel;
 import com.alkandros.minilnthebox.utils.StringUtil;
 
@@ -135,6 +139,82 @@ public class SpecificationPage extends BaseActivity{
 		
 		layoutSepcGroup.addView(getSpecificationView("Color", sColor));
 		layoutSepcGroup.addView(getSpecificationView("Size", sSize));
+		
+		
+		
+		//set Option Tag..
+		
+		ArrayList<ItemOptionTagModel> itemOptionTagModels=getItemModel.getTagModels();
+		
+		ArrayList<OptionTagValueModel> optionTagValueModels=new ArrayList<OptionTagValueModel>();
+		
+		
+		//Filter the data...
+		
+		for (int i = 0; i < itemOptionTagModels.size(); i++) {
+			
+				boolean isOption=true;
+				for (int j = 0; j <optionTagValueModels.size(); j++) {
+				
+					if(itemOptionTagModels.get(i).getOption_id().endsWith(optionTagValueModels.get(j).getOption_id())){
+						
+						 isOption=false;
+						
+						boolean isTag=true;
+						for (int j2 = 0; j2 < optionTagValueModels.get(j).getTagIds().size(); j2++) {
+							
+							if(itemOptionTagModels.get(i).getTag_id().endsWith(optionTagValueModels.get(j).getTagIds().get(j2))){
+								
+								isTag=false;
+								break;
+								
+							}
+							
+						}
+						
+						if(isTag){
+							
+							OptionTagValueModel temp=optionTagValueModels.get(j);
+							
+							temp.setTag_Names(itemOptionTagModels.get(i).getTagModel().getTag());
+							temp.setTagIds(itemOptionTagModels.get(i).getTag_id());
+							
+							optionTagValueModels.remove(j);
+							
+							optionTagValueModels.add(j, temp);
+							
+						}
+						
+						
+						
+					}
+					
+					
+				}
+				
+				if(isOption){
+					
+					OptionTagValueModel tempOptionTagValueModel=new OptionTagValueModel();
+					
+					tempOptionTagValueModel.setOption_id(itemOptionTagModels.get(i).getOption_id());
+					tempOptionTagValueModel.setOption_Name(itemOptionTagModels.get(i).getOptionModel().getName());
+					tempOptionTagValueModel.setTagIds(itemOptionTagModels.get(i).getTagModel().getId());
+					tempOptionTagValueModel.setTag_Names(itemOptionTagModels.get(i).getTagModel().getTag());
+					
+					optionTagValueModels.add(tempOptionTagValueModel);
+				}
+			
+		}
+		
+		//set Filtered the data...
+		
+		for (int k = 0; k < optionTagValueModels.size(); k++) {
+			
+			
+			layoutSepcGroup.addView(getSpecificationView(optionTagValueModels.get(k).getOption_Name(), StringUtils.join(optionTagValueModels.get(k).getTag_Names(), ",")));
+			
+		}
+		
 		
 	}
 
