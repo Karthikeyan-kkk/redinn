@@ -1,5 +1,8 @@
 package com.alkandros.minilnthebox.ui.detail;
 
+
+
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import org.apache.commons.lang3.StringUtils;
@@ -9,12 +12,20 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.baseclass.BaseActivity;
+import com.alkandros.minilnthebox.custom.ExpandCollapseAnimation;
 import com.alkandros.minilnthebox.model.ColorModel;
 import com.alkandros.minilnthebox.model.GetItemModel;
 import com.alkandros.minilnthebox.model.ItemOptionTagModel;
@@ -30,6 +41,12 @@ public class SpecificationPage extends BaseActivity{
 	 
 	 LinearLayout layoutSepcGroup;
 	 private LayoutInflater mInflater;
+	 
+	 Button btnSpecification;
+
+
+	 int visibility=0;
+	 int height;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -106,6 +123,7 @@ public class SpecificationPage extends BaseActivity{
 			}
 			
 			if(isSize){
+				
 				size.add(itemSizeColorModels.get(i).getSizeModel());
 			}
 			
@@ -216,6 +234,8 @@ public class SpecificationPage extends BaseActivity{
 		}
 		
 		
+		
+		
 	}
 
 
@@ -226,13 +246,55 @@ public class SpecificationPage extends BaseActivity{
 		setLeftSelector(R.drawable.left_arrow, R.drawable.left_arrow);
 		setRightSelector(R.drawable.button_2_hover, R.drawable.button_2_hover);
 		
+		
+		btnSpecification=(Button)findViewById(R.id.btnSpecification);
+		
 		layoutSepcGroup=(LinearLayout)findViewById(R.id.layoutSepcGroup);
 		 mInflater = (LayoutInflater) activity	.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+		 
+		
+		 
+		 layoutSepcGroup.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
+				@SuppressWarnings("deprecation")
+				@Override
+				public void onGlobalLayout() {
+					
+					System.out.println("HEIGHT onGlobalLayout == "+layoutSepcGroup.getMeasuredHeight());
+					 height =layoutSepcGroup.getMeasuredHeight();
+				}
+			});
+			
 	}
 	
 	private void clickListner() {
 		// TODO Auto-generated method stub
+		btnSpecification.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				
+				
+			/*	System.out.println("HEIGHT== "+layoutSepcGroup.getMeasuredHeight());
+				Animation animation = new ExpandCollapseAnimation(layoutSepcGroup, height, layoutSepcGroup.getMeasuredHeight()==0);
+				animation.setDuration(1000);
+				layoutSepcGroup.startAnimation(animation);*/
+				
+				
+				 
+				
+			}
+		});
 		
+		
+		
+		getBtnLeft().setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				finishActivity();
+				
+			}
+		});
 	}
 	
 	private View getSpecificationView(String name,String value){
@@ -248,5 +310,7 @@ public class SpecificationPage extends BaseActivity{
     	
 		return convertView;
 	}
+	
+
 
 }
