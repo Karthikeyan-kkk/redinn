@@ -27,6 +27,7 @@ import com.alkandros.minilnthebox.custom.slidinglib.SlidingMenu;
 import com.alkandros.minilnthebox.model.CategoriesModel;
 import com.alkandros.minilnthebox.model.ImagePrefixModel;
 import com.alkandros.minilnthebox.model.SlideNavigationModel;
+import com.alkandros.minilnthebox.ui.detail.DetailPageList;
 import com.alkandros.minilnthebox.utils.Utils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -59,6 +60,7 @@ public class SliderManager implements OnClickListener {
 	private SearchListAdapter searchListAdapter;
 	private LayoutInflater mInflater;
 	 private View header ;
+	 private SearchSubListAdapter searchSubListAdapter;
 	protected ImageLoader imageLoader = ImageLoader.getInstance();
 	 
 	 protected DisplayImageOptions options;
@@ -186,9 +188,9 @@ public class SliderManager implements OnClickListener {
 		searchListAdapter.setItemClickListener(new ItemClickListner() {
 			
 			@Override
-			public void ItemClickListner(int pos) {
+			public void ItemClickListner(final int pos) {
 				
-				NotifyManager.showShortToast(context, ""+categoriesModels.get(pos).getSubCategoriesModels().size());
+				
 
 				
 				
@@ -219,7 +221,7 @@ public class SliderManager implements OnClickListener {
 				});
 				
 				
-				SearchSubListAdapter searchSubListAdapter=new SearchSubListAdapter(context, categoriesModels.get(pos).getSubCategoriesModels());
+				  searchSubListAdapter=new SearchSubListAdapter(context, categoriesModels.get(pos).getSubCategoriesModels());
 				
 				
 				lstSlideItems.setAdapter(null);
@@ -227,7 +229,20 @@ public class SliderManager implements OnClickListener {
 				
 				lstSlideItems.setAdapter(searchSubListAdapter);
 				
-				
+				searchSubListAdapter.setItemClickListener(new ItemClickListner() {
+					
+					@Override
+					public void ItemClickListner(int position) {
+						
+						intent =new Intent(context,DetailPageList.class);
+						intent.putExtra("CAT_ID", categoriesModels.get(pos).getId());
+						intent.putExtra("SUBCAT_ID", categoriesModels.get(pos).getSubCategoriesModels().get(position).getId());
+						context.startActivity(intent);
+						((Activity) context).overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+						
+						
+					}
+				});
 				
 			}
 		});

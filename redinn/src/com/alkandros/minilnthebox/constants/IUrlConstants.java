@@ -12,6 +12,13 @@ public interface IUrlConstants {
 	public String GET_ITEM = HEADER+"/MobileServices/GetItem/";
 	
 	
+	public String GET_ITEMS_BY_SUB_CATEGORY = HEADER+"/MobileServices/GetItemsBySubCategory/";
+	
+	
+	
+	
+	
+	
 	
 	
 

@@ -52,13 +52,13 @@ public class ApiManager {
 		this.apiResponseListner=apiResponseListner;
 		
 		 if(Utils.checkInternetConnection(context)){
-			 callGetApi(url);
+			 callGetApiJson(url);
 			 }else{
 				 NotifyManager.showLongToast(context, context.getResources().getString(R.string.connection_error_message));
 			 }
 	}
 
-	private void callGetApi(String url) {
+	private void callGetApiJson(String url) {
 		
 		if(isProgress)
 			
@@ -93,6 +93,7 @@ public class ApiManager {
 					progress.dismiss();
 					
 				}
+				Utils.longInfo("Error"+error.toString());
 				
 				apiResponseListner.dataDownloadedFailed(error.getMessage());
 				
@@ -111,6 +112,7 @@ public class ApiManager {
 			apiResponseListner.dataDownloadedFailed(exception.getMessage());
 		}
 	}
+	
 	
 	
 	
