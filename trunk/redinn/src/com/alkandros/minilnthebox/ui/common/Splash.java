@@ -14,7 +14,7 @@ import com.alkandros.minilnthebox.baseclass.MyApplication;
 import com.alkandros.minilnthebox.constants.IJsonConstants;
 import com.alkandros.minilnthebox.constants.IUrlConstants;
 import com.alkandros.minilnthebox.manager.ApiManager;
-import com.alkandros.minilnthebox.manager.ApiManager.ApiResponseListner;
+import com.alkandros.minilnthebox.manager.ApiManager.ApiJsonObjectResponseListner;
 import com.alkandros.minilnthebox.manager.AppPreferenceManager;
 import com.alkandros.minilnthebox.manager.NotifyManager;
 import com.alkandros.minilnthebox.manager.Utils;
@@ -68,7 +68,7 @@ public class Splash extends BaseActivity {
 		apiManager = new ApiManager(IUrlConstants.GET_HOME_SETING, context,
 				false);
 
-		apiManager.setApiResponseListener(new ApiResponseListner() {
+		apiManager.setApiJsonObjectResponseListener(new ApiJsonObjectResponseListner() {
 
 			@Override
 			public void dataDownloadedSuccessfully(JSONObject response) {

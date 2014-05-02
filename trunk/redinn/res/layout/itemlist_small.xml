@@ -1,39 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
- xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
 
     <RelativeLayout
-      
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/bl_sort_tab_bg" >
+          android:background="@color/white"
+       >
 
         <FrameLayout
             android:id="@+id/baby_list_image_vg"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true" 
-              android:background="@color/white"
-            >
+            android:layout_alignParentLeft="true"
+            android:background="@color/white" >
 
-            <com.alkandros.asyncimage.AsyncImageView
-
+            <ImageView
                 android:id="@+id/baby_list_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="#ffe5e5e5"
-                android:scaleType="fitCenter" 
-                 app:asyncimage_bitmapconfig="RGB565"
-       	 app:asyncimage_progressbar="@+id/progressBar"
-                
-                />
-             <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+                android:scaleType="fitCenter"
+               />
+
 
             <LinearLayout
                 android:id="@+id/mailview"
@@ -64,7 +55,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/baby_list_image_vg"
-            android:background="@color/white"
+          
             android:orientation="vertical" >
 
             <LinearLayout

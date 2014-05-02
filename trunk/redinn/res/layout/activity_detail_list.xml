@@ -20,13 +20,22 @@
         android:background="@color/white"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
+        
+          <RelativeLayout 
+              
+            android:layout_width="58dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bl_sort_tab_bg"
+            android:gravity="center"
+            >
 
         <ImageView
             android:id="@+id/imgViewChange"
-            android:layout_width="58.0dip"
-            android:layout_height="fill_parent"
-            android:background="@drawable/bl_sort_tab_bg"
-            android:scaleType="centerInside" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/baby_list_indicatind_2_normal"
+            />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/txtSort"
@@ -64,6 +73,8 @@
         android:divider="@color/transparent"
         android:dividerHeight="0.0dip"
         android:fadingEdge="none"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
         android:scrollbarStyle="outsideOverlay"
         android:scrollingCache="false" />
 

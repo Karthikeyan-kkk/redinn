@@ -10,7 +10,7 @@ import android.content.Context;
 
 import com.alkandros.minilnthebox.constants.IJsonConstants;
 import com.alkandros.minilnthebox.constants.IUrlConstants;
-import com.alkandros.minilnthebox.manager.ApiManager.ApiResponseListner;
+import com.alkandros.minilnthebox.manager.ApiManager.ApiJsonObjectResponseListner;
 import com.alkandros.minilnthebox.model.CategoryModel;
 import com.alkandros.minilnthebox.model.CollectionModel;
 import com.alkandros.minilnthebox.model.ColorModel;
@@ -53,7 +53,7 @@ public class ApiServicesManager {
 		apiManager = new ApiManager(IUrlConstants.GET_ITEM+id, context,
 				true);
 		
-		apiManager.setApiResponseListener(new ApiResponseListner() {
+		apiManager.setApiJsonObjectResponseListener(new ApiJsonObjectResponseListner() {
 			
 			@Override
 			public void dataDownloadedSuccessfully(JSONObject response) {

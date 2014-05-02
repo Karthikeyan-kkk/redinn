@@ -28,7 +28,7 @@ import com.alkandros.minilnthebox.custom.autoscrollviewadapter.AutoScrollViewPag
 import com.alkandros.minilnthebox.manager.ApiManager;
 import com.alkandros.minilnthebox.manager.ApiServicesManager;
 import com.alkandros.minilnthebox.manager.AppPreferenceManager;
-import com.alkandros.minilnthebox.manager.ApiManager.ApiResponseListner;
+import com.alkandros.minilnthebox.manager.ApiManager.ApiJsonObjectResponseListner;
 import com.alkandros.minilnthebox.model.CategoryModel;
 import com.alkandros.minilnthebox.model.CollectionModel;
 import com.alkandros.minilnthebox.model.ColorModel;
@@ -191,7 +191,7 @@ public class DetailPage extends BaseActivity implements IUrlConstants ,OnClickLi
 			apiManager = new ApiManager(IUrlConstants.GET_ITEM+id, activity,
 					true);
 			
-			apiManager.setApiResponseListener(new ApiResponseListner() {
+			apiManager.setApiJsonObjectResponseListener(new ApiJsonObjectResponseListner() {
 				
 				@Override
 				public void dataDownloadedSuccessfully(JSONObject response) {

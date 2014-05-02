@@ -8,21 +8,20 @@
       
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/bl_sort_tab_bg" >
+        android:background="@drawable/white" >
 
         <FrameLayout
             android:id="@+id/baby_list_image_vg"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
 
-            <com.alkandros.asyncimage.AsyncImageView
+            <ImageView
 
                 android:id="@+id/baby_list_image"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
                  android:scaleType="fitCenter" 
-                 app:asyncimage_bitmapconfig="RGB565"
-       	 app:asyncimage_progressbar="@+id/progressBar"
+                
                 />
            
 
@@ -169,10 +168,5 @@
                 android:textSize="8.0sp" />
         </FrameLayout>
     </RelativeLayout>
-      <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
 
 </RelativeLayout>
