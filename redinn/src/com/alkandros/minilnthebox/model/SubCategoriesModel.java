@@ -1,18 +1,16 @@
 package com.alkandros.minilnthebox.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-public class CategoriesModel implements Serializable {
+public class SubCategoriesModel implements Serializable {
 	
 	
 	private String  id="";
 	private String  image="";
 	private String  name="";
 	
-	private boolean isCategory=true;
+	private boolean isCategory=false;
 	
-	private ArrayList<SubCategoriesModel> subCategoriesModels=new ArrayList<SubCategoriesModel>();
 	public String getId() {
 		return id;
 	}
@@ -30,13 +28,6 @@ public class CategoriesModel implements Serializable {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public ArrayList<SubCategoriesModel> getSubCategoriesModels() {
-		return subCategoriesModels;
-	}
-	public void setSubCategoriesModels(
-			ArrayList<SubCategoriesModel> subCategoriesModels) {
-		this.subCategoriesModels = subCategoriesModels;
 	}
 	public boolean isCategory() {
 		return isCategory;

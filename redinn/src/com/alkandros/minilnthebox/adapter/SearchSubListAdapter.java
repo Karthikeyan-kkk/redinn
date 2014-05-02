@@ -7,6 +7,7 @@ import com.alkandros.minilnthebox.manager.AppPreferenceManager;
 import com.alkandros.minilnthebox.model.CategoriesModel;
 import com.alkandros.minilnthebox.model.ImagePrefixModel;
 import com.alkandros.minilnthebox.model.SlideNavigationModel;
+import com.alkandros.minilnthebox.model.SubCategoriesModel;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -26,7 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class SearchListAdapter extends ArrayAdapter<CategoriesModel> {
+public class SearchSubListAdapter extends ArrayAdapter<SubCategoriesModel> {
 
 	Context context;
 	protected ImageLoader imageLoader = ImageLoader.getInstance();
@@ -35,8 +36,7 @@ public class SearchListAdapter extends ArrayAdapter<CategoriesModel> {
 	 
 	 String imgHeader;
 	
-	public SearchListAdapter(Context context, 
-			ArrayList<CategoriesModel> objects) {
+	public SearchSubListAdapter(Context context, ArrayList<SubCategoriesModel> objects) {
 		super(context, 0, objects);
 
 		this.context = context;
@@ -67,7 +67,7 @@ public class SearchListAdapter extends ArrayAdapter<CategoriesModel> {
 	public View getView(final int position, View convertView, ViewGroup parent) {
 
 		ViewHolder holder = null;
-		final CategoriesModel rowItem = getItem(position);
+		final SubCategoriesModel rowItem = getItem(position);
 
 		LayoutInflater mInflater = (LayoutInflater) context
 				.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -96,8 +96,8 @@ public class SearchListAdapter extends ArrayAdapter<CategoriesModel> {
 			holder = (ViewHolder) convertView.getTag();
 
 		
-		
-		imageLoader.displayImage(imgHeader+rowItem.getImage(), holder.img,options);
+		holder.img.setVisibility(View.INVISIBLE);
+	//	imageLoader.displayImage(imgHeader+rowItem.getImage(), holder.img,options);
 		holder.txtName.setText(rowItem.getName());
 		
 	//	holder.txtCount.setText("("+rowItem.getCount()+")");

@@ -26,6 +26,7 @@ import com.alkandros.minilnthebox.model.ImagePrefixModel;
 import com.alkandros.minilnthebox.model.PriceModel;
 import com.alkandros.minilnthebox.model.SlideNavigationModel;
 import com.alkandros.minilnthebox.model.SlideShowModel;
+import com.alkandros.minilnthebox.model.SubCategoriesModel;
 import com.alkandros.minilnthebox.ui.home.MainPageFragment;
 
 import com.google.gson.Gson;
@@ -161,6 +162,9 @@ public class Splash extends BaseActivity {
 					}
 
 					configModel.setFeaturedModels(featuredModels);
+					
+					
+					
 
 					// Set Category Value..
 					ArrayList<CategoriesModel> categoriesModels = new ArrayList<CategoriesModel>();
@@ -169,8 +173,20 @@ public class Splash extends BaseActivity {
 					for (int i = 0; i < j_Categories.length(); i++) {
 						JSONObject jitem = j_Categories.getJSONObject(i);
 
-						CategoriesModel categoriesModel = new Gson().fromJson(
-								jitem.toString(), CategoriesModel.class);
+						CategoriesModel categoriesModel = new Gson().fromJson(jitem.toString(), CategoriesModel.class);
+						JSONArray j_subCategories = jitem.getJSONArray(IJsonConstants.J_SubCategories);
+						ArrayList<SubCategoriesModel> subCategoriesModels=new ArrayList<SubCategoriesModel>();
+						
+						for (int j = 0; j < j_subCategories.length(); j++) {
+							
+							JSONObject jsubitem = j_subCategories.getJSONObject(j);
+							
+							SubCategoriesModel subCategoriesModel=new Gson().fromJson(jsubitem.toString(), SubCategoriesModel.class);
+							subCategoriesModels.add(subCategoriesModel);
+							
+						}
+						
+						categoriesModel.setSubCategoriesModels(subCategoriesModels);
 
 						categoriesModels.add(categoriesModel);
 

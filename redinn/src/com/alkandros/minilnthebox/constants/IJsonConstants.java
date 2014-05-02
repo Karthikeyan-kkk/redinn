@@ -27,6 +27,9 @@ public interface IJsonConstants {
 
 	public String J_Categories = "Categories";
 	
+	public String J_SubCategories = "SubCategories";
+	
+	
 	public String J_SideNavigationTags = "SideNavigationTags";
 	
 	
