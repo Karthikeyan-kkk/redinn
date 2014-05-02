@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import com.alkandros.asyncimage.AsyncImageView;
 import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.manager.AppPreferenceManager;
+import com.alkandros.minilnthebox.model.ConfigModel;
 import com.alkandros.minilnthebox.model.ImagePrefixModel;
 import com.alkandros.minilnthebox.model.ListItemModel;
 import com.alkandros.minilnthebox.model.SlideNavigationModel;
 import com.alkandros.minilnthebox.model.TestModel;
+import com.alkandros.minilnthebox.utils.Utils;
+import com.alkandros.minilnthebox.utils.ViewUtils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -36,18 +39,22 @@ public class MultipleListAdapter extends ArrayAdapter<ListItemModel> {
 	 protected DisplayImageOptions options;
 	 
 	 String imgHeader;
+	 String currency;
 	 
 	 private int VIEW_TYPE=0;
+	 private ConfigModel configModel;
 	
 	public MultipleListAdapter(Context context, 
 			ArrayList<ListItemModel> objects) {
 		super(context, 0, objects);
 
 		this.context = context;
-		
-		ImagePrefixModel tempImagePrefixModel=AppPreferenceManager.getConfigModel(context).getImagePrefixModel();
+		configModel=AppPreferenceManager.getConfigModel(context);
+		ImagePrefixModel tempImagePrefixModel=configModel.getImagePrefixModel();
 		
 		imgHeader=tempImagePrefixModel.getItem_image_path()+tempImagePrefixModel.getImage_thumb_md();
+		
+		currency=configModel.getCurrencyModel().getSymbol();
 
 	}
 
@@ -74,13 +81,24 @@ public class MultipleListAdapter extends ArrayAdapter<ListItemModel> {
 			holder.baby_list_image = (ImageView) convertView
 					.findViewById(R.id.baby_list_image);
 
-			
+			holder.txtName=(TextView)convertView.findViewById(R.id.txtName);
 			
 			holder.baby_list_currency = (TextView) convertView
 					.findViewById(R.id.baby_list_currency);
 
 			
+			int width=Utils.getDeviceWidth(context);
+			
 
+			if(VIEW_TYPE==1){
+			
+				ViewUtils.setViewHeight(holder.baby_list_image, width);
+			}
+			else if(VIEW_TYPE==2){
+				ViewUtils.setViewHeight(holder.baby_list_image, width/2);
+			}
+			
+			
 			
 			convertView.setTag(holder);
 		} else
@@ -94,8 +112,8 @@ public class MultipleListAdapter extends ArrayAdapter<ListItemModel> {
 		System.out.println("UTL="+imgHeader+rowItem.getItem_image());
 		imageLoader.displayImage(imgHeader+rowItem.getItem_image(), holder.baby_list_image,options);
 	
-		holder.baby_list_currency.setText("("+rowItem.getName()+")");
-		
+		holder.baby_list_currency.setText(currency+" "+rowItem.getPriceModel().getPrice());
+		holder.txtName.setText(rowItem.getName());
 		
 		
 	
@@ -120,6 +138,8 @@ public class MultipleListAdapter extends ArrayAdapter<ListItemModel> {
 		ImageView baby_list_image;
 
 		TextView baby_list_currency;
+		TextView txtName;
+		
 
 	
 

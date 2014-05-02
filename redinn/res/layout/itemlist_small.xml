@@ -57,6 +57,17 @@
             android:layout_toRightOf="@+id/baby_list_image_vg"
           
             android:orientation="vertical" >
+            
+             <TextView 
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                 android:paddingLeft="10.0dip"
+                
+                  android:textColor="@color/black"
+                    android:textSize="12.0sp"
+                />
 
             <LinearLayout
                 android:id="@+id/baby_list_vg_1"
@@ -131,6 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                   android:rating="5"
                     android:numStars="5" />
 
                 <TextView
