@@ -77,5 +77,15 @@
         android:verticalSpacing="10dp"
         android:scrollbarStyle="outsideOverlay"
         android:scrollingCache="false" />
+    
+    <RelativeLayout 
+        android:id="@+id/relSort"
+          android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        >
+        
+        
+    </RelativeLayout>
 
 </RelativeLayout>
