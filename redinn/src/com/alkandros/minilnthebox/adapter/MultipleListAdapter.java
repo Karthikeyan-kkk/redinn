@@ -6,6 +6,7 @@ import com.alkandros.asyncimage.AsyncImageView;
 import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.manager.AppPreferenceManager;
 import com.alkandros.minilnthebox.model.ImagePrefixModel;
+import com.alkandros.minilnthebox.model.ListItemModel;
 import com.alkandros.minilnthebox.model.SlideNavigationModel;
 import com.alkandros.minilnthebox.model.TestModel;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -27,7 +28,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MultipleListAdapter extends ArrayAdapter<TestModel> {
+public class MultipleListAdapter extends ArrayAdapter<ListItemModel> {
 
 	Context context;
 	protected ImageLoader imageLoader = ImageLoader.getInstance();
@@ -39,14 +40,14 @@ public class MultipleListAdapter extends ArrayAdapter<TestModel> {
 	 private int VIEW_TYPE=0;
 	
 	public MultipleListAdapter(Context context, 
-			ArrayList<TestModel> objects) {
+			ArrayList<ListItemModel> objects) {
 		super(context, 0, objects);
 
 		this.context = context;
 		
 		ImagePrefixModel tempImagePrefixModel=AppPreferenceManager.getConfigModel(context).getImagePrefixModel();
 		
-		imgHeader=tempImagePrefixModel.getItem_image_path()+tempImagePrefixModel.getImage_thumb_sm();
+		imgHeader=tempImagePrefixModel.getItem_image_path()+tempImagePrefixModel.getImage_thumb_md();
 
 	}
 
@@ -55,7 +56,7 @@ public class MultipleListAdapter extends ArrayAdapter<TestModel> {
 	public View getView(final int position, View convertView, ViewGroup parent) {
 
 		ViewHolder holder = null;
-		final TestModel rowItem = getItem(position);
+		final ListItemModel rowItem = getItem(position);
 
 		LayoutInflater mInflater = (LayoutInflater) context
 				.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -70,7 +71,7 @@ public class MultipleListAdapter extends ArrayAdapter<TestModel> {
 
 			
 
-			holder.baby_list_image = (AsyncImageView) convertView
+			holder.baby_list_image = (ImageView) convertView
 					.findViewById(R.id.baby_list_image);
 
 			
@@ -88,7 +89,10 @@ public class MultipleListAdapter extends ArrayAdapter<TestModel> {
 
 		
 		
-		holder.baby_list_image.setUrl(rowItem.getImage());
+	//	holder.baby_list_image.setUrl(imgHeader+rowItem.getItem_image());
+		
+		System.out.println("UTL="+imgHeader+rowItem.getItem_image());
+		imageLoader.displayImage(imgHeader+rowItem.getItem_image(), holder.baby_list_image,options);
 	
 		holder.baby_list_currency.setText("("+rowItem.getName()+")");
 		
@@ -113,7 +117,7 @@ public class MultipleListAdapter extends ArrayAdapter<TestModel> {
 	/* private view holder class */
 	private class ViewHolder {
 
-		AsyncImageView baby_list_image;
+		ImageView baby_list_image;
 
 		TextView baby_list_currency;
 

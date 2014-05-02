@@ -2,6 +2,8 @@ package com.alkandros.minilnthebox.manager;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -10,7 +12,9 @@ import com.alkandros.minilnthebox.constants.IUrlConstants;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import android.content.Context;
@@ -25,7 +29,8 @@ public class ApiManager {
 	
 	private boolean isProgress;
 	
-	private ApiResponseListner apiResponseListner;
+	private ApiJsonObjectResponseListner apiJsonObjectResponseListner;
+	private ApiJsonArrayResponseListner apiJsonArrayResponseListner;
 	private String url;
 	
 	public ApiManager(String url,Context context,boolean isProgress) {
@@ -47,12 +52,23 @@ public class ApiManager {
 		 
 	}
 	
-	public void setApiResponseListener(ApiResponseListner apiResponseListner){
+	public void setApiJsonObjectResponseListener(ApiJsonObjectResponseListner apiJsonObjectResponseListner){
 	
-		this.apiResponseListner=apiResponseListner;
+		this.apiJsonObjectResponseListner=apiJsonObjectResponseListner;
 		
 		 if(Utils.checkInternetConnection(context)){
 			 callGetApiJson(url);
+			 }else{
+				 NotifyManager.showLongToast(context, context.getResources().getString(R.string.connection_error_message));
+			 }
+	}
+	
+	public void setApiJsonArrayResponseListener(ApiJsonArrayResponseListner apiJsonArrayResponseListner){
+		
+		this.apiJsonArrayResponseListner=apiJsonArrayResponseListner;
+		
+		 if(Utils.checkInternetConnection(context)){
+			 callGetApiJsonArray(url);
 			 }else{
 				 NotifyManager.showLongToast(context, context.getResources().getString(R.string.connection_error_message));
 			 }
@@ -78,7 +94,7 @@ public class ApiManager {
 				}
 				
 				Utils.longInfo(response.toString());
-				apiResponseListner.dataDownloadedSuccessfully(response);
+				apiJsonObjectResponseListner.dataDownloadedSuccessfully(response);
 				
 				
 				
@@ -95,7 +111,7 @@ public class ApiManager {
 				}
 				Utils.longInfo("Error"+error.toString());
 				
-				apiResponseListner.dataDownloadedFailed(error.getMessage());
+				apiJsonObjectResponseListner.dataDownloadedFailed(error.getMessage());
 				
 			}
 		});
@@ -109,16 +125,80 @@ public class ApiManager {
 				
 			}
 			 NotifyManager.showLongToast(context, context.getResources().getString(R.string.common_error_message));
-			apiResponseListner.dataDownloadedFailed(exception.getMessage());
+			 apiJsonObjectResponseListner.dataDownloadedFailed(exception.getMessage());
+		}
+	}
+	
+	
+	private void callGetApiJsonArray(String url) {
+		
+//		Response.Listener<JSONArray> listener = new Response.Listener<JSONArray>() {public void onResponse(JSONArray response) {};
+		
+		
+		
+		
+		if(isProgress)
+			
+			progress.show();
+			
+		
+		System.out.println("URL == "+url);
+		try{
+		
+			
+			JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(url, new Listener<JSONArray>() {
+
+				@Override
+				public void onResponse(JSONArray arg0) {
+					
+					
+				}
+			}, new Response.ErrorListener() {
+
+				@Override
+				public void onErrorResponse(VolleyError error) {
+					
+					if(isProgress){
+						
+						progress.dismiss();
+						
+					}
+					Utils.longInfo("Error"+error.toString());
+					
+					apiJsonArrayResponseListner.dataDownloadedFailed(error.getMessage());
+					
+				}
+			} );
+			queue.add(jsonArrayRequest);
+		
+		}catch(Exception exception){
+			if(isProgress){
+				
+				progress.dismiss();
+				
+			}
+			 NotifyManager.showLongToast(context, context.getResources().getString(R.string.common_error_message));
+			 apiJsonArrayResponseListner.dataDownloadedFailed(exception.getMessage());
 		}
 	}
 	
 	
 	
-	
-	public static interface ApiResponseListner {
+	public static interface ApiJsonObjectResponseListner {
 
 		void dataDownloadedSuccessfully(JSONObject response) ;
+		
+		
+
+		void dataDownloadedFailed(String error);
+
+	}
+	
+	public static interface ApiJsonArrayResponseListner {
+
+		void dataDownloadedSuccessfully(JSONArray response) ;
+		
+		
 
 		void dataDownloadedFailed(String error);
 

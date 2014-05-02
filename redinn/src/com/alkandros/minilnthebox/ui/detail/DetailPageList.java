@@ -16,11 +16,22 @@ import android.widget.TextView;
 import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.adapter.MultipleListAdapter;
 import com.alkandros.minilnthebox.baseclass.BaseActivity;
+import com.alkandros.minilnthebox.baseclass.MyApplication;
+import com.alkandros.minilnthebox.constants.IJsonConstants;
 import com.alkandros.minilnthebox.constants.IUrlConstants;
 import com.alkandros.minilnthebox.manager.ApiManager;
-import com.alkandros.minilnthebox.manager.ApiManager.ApiResponseListner;
+import com.alkandros.minilnthebox.manager.ApiManager.ApiJsonArrayResponseListner;
+import com.alkandros.minilnthebox.manager.ApiManager.ApiJsonObjectResponseListner;
+import com.alkandros.minilnthebox.manager.ApiManager2;
+import com.alkandros.minilnthebox.manager.ApiManager2.DataDownloadListener;
 import com.alkandros.minilnthebox.manager.NotifyManager;
+import com.alkandros.minilnthebox.model.ConfigModel;
+import com.alkandros.minilnthebox.model.CurrencyModel;
+import com.alkandros.minilnthebox.model.ItemModel;
+import com.alkandros.minilnthebox.model.ListItemModel;
+import com.alkandros.minilnthebox.model.PriceModel;
 import com.alkandros.minilnthebox.model.TestModel;
+import com.google.gson.Gson;
 
 public class DetailPageList extends BaseActivity implements OnClickListener {
 
@@ -34,6 +45,8 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 	private Bundle extras;
 	private MultipleListAdapter multipleListAdapter;
 	private ApiManager apiManager;
+	private  ArrayList<ListItemModel> arrayListItemModels;
+	private ApiManager2 apiManager2;
 	String catID,subCatID;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +64,7 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 		
 		intializeUI();
 
-	//	clickListner();
+		clickListner();
 		
 		//setData();
 		
@@ -63,33 +76,73 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 
 	private void callGetSublistApi(String catID, String subCatID) {
 		
-		apiManager = new ApiManager(IUrlConstants.GET_ITEMS_BY_SUB_CATEGORY+subCatID+"/"+catID, activity,
-				true);
+		final MyApplication myApplication=(MyApplication)getApplicationContext();
+		ConfigModel configModel=myApplication.getConfigModel();
 		
-		apiManager.setApiResponseListener(new ApiResponseListner() {
+		final CurrencyModel currencyModel=configModel.getCurrencyModel();
+		
+		arrayListItemModels=new ArrayList<ListItemModel>();
+		apiManager2=new ApiManager2(IUrlConstants.GET_ITEMS_BY_SUB_CATEGORY+subCatID+"/"+catID, new String[]{""}, new String[]{""}, activity);
+		
+		apiManager2.setDataDownloadListener(new DataDownloadListener() {
 			
 			@Override
-			public void dataDownloadedSuccessfully(JSONObject response) {
-				
-				
+			public void dataDownloadedSuccessfully(String response) {
 				try {
-					JSONArray items=new JSONArray(response.toString());
+					JSONArray jsonArray=new JSONArray(response);
 					
+					System.out.println("Size==ARRAY"+jsonArray.length());
 					
-					System.out.println("Size=="+items.length());
+					for (int i = 0; i < jsonArray.length(); i++) {
+						
+						JSONObject jsonObject=jsonArray.getJSONObject(i);
+						
+						ListItemModel listItemModel=new Gson().fromJson(jsonObject.getJSONObject(IJsonConstants.J_Item).toString(), ListItemModel.class);
+						PriceModel priceModel=new PriceModel();
+						JSONArray J_PriceArray = jsonObject.getJSONArray(IJsonConstants.J_ItemPrice);
+						
+						for (int j = 0; j < J_PriceArray.length(); j++) {
+							
+							JSONObject J_ItemPrice = J_PriceArray.getJSONObject(j);
+							
+							
+							
+							if (J_ItemPrice.getString(IJsonConstants.J_currency_id).equals(currencyModel.getCurr_id())) {
+								
+								priceModel=new Gson().fromJson(J_ItemPrice.toString(), PriceModel.class);
+								
+								break;
+							}
+						
+						}
+						
+						listItemModel.setPriceModel(priceModel);
+						
+						System.out.println("**********"+i+"**********************");
+						
+						System.out.println("ID "+listItemModel.getId());
+						System.out.println("IMG "+listItemModel.getItem_image());
+						System.out.println("NAme "+listItemModel.getName());
+						System.out.println("Rat "+listItemModel.getRating());
+						System.out.println("Stock "+listItemModel.getTotalstock());
+						System.out.println("Price "+listItemModel.getPriceModel().getPrice());
+						
+						System.out.println("*************************************");
+						arrayListItemModels.add(listItemModel);
+					}
+					
+					setData();
+					System.out.println("Size==List"+arrayListItemModels.size());
+					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
 			}
-			
-			@Override
-			public void dataDownloadedFailed(String error) {
-				// TODO Auto-generated method stub
-				
-			}
 		});
+		apiManager2.execute();
+		
 		
 	}
 
@@ -194,7 +247,7 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 		*/
 		
 		
-		multipleListAdapter=new MultipleListAdapter(activity, testModels);
+		multipleListAdapter=new MultipleListAdapter(activity,arrayListItemModels);
 		
 		gridList.setAdapter(multipleListAdapter);
 	}
@@ -230,18 +283,21 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 			if(multipleListAdapter!=null){
 				
 				if(multipleListAdapter.getViewType()==0){
-					
-					multipleListAdapter.setViewType(1);
 					gridList.setNumColumns(1);
+					multipleListAdapter.setViewType(1);
 					
+					imgViewChange.setBackgroundResource(R.drawable.baby_list_indicatind_1_normal);
 					
 				}
 				else if(multipleListAdapter.getViewType()==1){
 					multipleListAdapter.setViewType(2);
 					gridList.setNumColumns(2);
+					imgViewChange.setBackgroundResource(R.drawable.baby_list_indicatind_2_normal);
 				}
 				else if(multipleListAdapter.getViewType()==2){
 					multipleListAdapter.setViewType(0);
+					gridList.setNumColumns(1);
+					imgViewChange.setBackgroundResource(R.drawable.baby_list_indicatind_3_normal);
 					
 				}
 				
