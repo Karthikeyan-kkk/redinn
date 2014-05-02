@@ -3,6 +3,7 @@ package com.alkandros.minilnthebox.adapter;
 import java.util.ArrayList;
 
 import com.alkandros.minilnthebox.R;
+import com.alkandros.minilnthebox.adapter.SearchListAdapter.ItemClickListner;
 import com.alkandros.minilnthebox.manager.AppPreferenceManager;
 import com.alkandros.minilnthebox.model.CategoriesModel;
 import com.alkandros.minilnthebox.model.ImagePrefixModel;
@@ -35,6 +36,8 @@ public class SearchSubListAdapter extends ArrayAdapter<SubCategoriesModel> {
 	 protected DisplayImageOptions options;
 	 
 	 String imgHeader;
+	 
+	 private ItemClickListner itemClickListner;
 	
 	public SearchSubListAdapter(Context context, ArrayList<SubCategoriesModel> objects) {
 		super(context, 0, objects);
@@ -58,8 +61,9 @@ public class SearchSubListAdapter extends ArrayAdapter<SubCategoriesModel> {
 	}
 	
 	
-	public void setSubCategories(boolean isSub){
-		
+	
+	public void setItemClickListener(ItemClickListner itemClickListner) {
+		this.itemClickListner = itemClickListner;
 	}
 
 
@@ -95,6 +99,17 @@ public class SearchSubListAdapter extends ArrayAdapter<SubCategoriesModel> {
 
 			holder = (ViewHolder) convertView.getTag();
 
+	convertView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				
+				itemClickListner.ItemClickListner(position);
+				
+			}
+		});
+		
 		
 		holder.img.setVisibility(View.INVISIBLE);
 	//	imageLoader.displayImage(imgHeader+rowItem.getImage(), holder.img,options);

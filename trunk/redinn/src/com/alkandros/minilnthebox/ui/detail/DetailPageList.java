@@ -2,6 +2,10 @@ package com.alkandros.minilnthebox.ui.detail;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +16,9 @@ import android.widget.TextView;
 import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.adapter.MultipleListAdapter;
 import com.alkandros.minilnthebox.baseclass.BaseActivity;
+import com.alkandros.minilnthebox.constants.IUrlConstants;
+import com.alkandros.minilnthebox.manager.ApiManager;
+import com.alkandros.minilnthebox.manager.ApiManager.ApiResponseListner;
 import com.alkandros.minilnthebox.manager.NotifyManager;
 import com.alkandros.minilnthebox.model.TestModel;
 
@@ -24,23 +31,69 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 	
 	private GridView gridList;
 
-	
+	private Bundle extras;
 	private MultipleListAdapter multipleListAdapter;
-	
-	
+	private ApiManager apiManager;
+	String catID,subCatID;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detail_list);
 
+
+		extras = getIntent().getExtras();
+		if (extras != null) {
+			catID = extras.getString("CAT_ID");
+			subCatID = extras.getString("SUBCAT_ID");
+			
+		}
+		
 		intializeUI();
 
 	//	clickListner();
 		
 		//setData();
+		
+		callGetSublistApi(catID,subCatID);
 
 	}
+
+	
+
+	private void callGetSublistApi(String catID, String subCatID) {
+		
+		apiManager = new ApiManager(IUrlConstants.GET_ITEMS_BY_SUB_CATEGORY+subCatID+"/"+catID, activity,
+				true);
+		
+		apiManager.setApiResponseListener(new ApiResponseListner() {
+			
+			@Override
+			public void dataDownloadedSuccessfully(JSONObject response) {
+				
+				
+				try {
+					JSONArray items=new JSONArray(response.toString());
+					
+					
+					System.out.println("Size=="+items.length());
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			
+			@Override
+			public void dataDownloadedFailed(String error) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+	}
+
+
 
 	private void setData() {
 		
