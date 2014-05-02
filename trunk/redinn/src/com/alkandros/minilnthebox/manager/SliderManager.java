@@ -1,35 +1,35 @@
 package com.alkandros.minilnthebox.manager;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import com.alkandros.minilnthebox.R;
-import com.alkandros.minilnthebox.adapter.SearchListAdapter;
-import com.alkandros.minilnthebox.adapter.SlideShowPagerAdapter;
-import com.alkandros.minilnthebox.custom.slidinglib.SlidingMenu;
-import com.alkandros.minilnthebox.model.SlideNavigationModel;
-import com.alkandros.minilnthebox.model.SlideShowModel;
-import com.alkandros.minilnthebox.utils.Utils;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.AsyncTask;
+import android.graphics.Bitmap;
 import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
+
+import com.alkandros.minilnthebox.R;
+import com.alkandros.minilnthebox.adapter.SearchListAdapter;
+import com.alkandros.minilnthebox.adapter.SearchSubListAdapter;
+import com.alkandros.minilnthebox.custom.slidinglib.SlidingMenu;
+import com.alkandros.minilnthebox.model.CategoriesModel;
+import com.alkandros.minilnthebox.model.ImagePrefixModel;
+import com.alkandros.minilnthebox.model.SlideNavigationModel;
+import com.alkandros.minilnthebox.utils.Utils;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 
 
 public class SliderManager implements OnClickListener {
@@ -53,16 +53,21 @@ public class SliderManager implements OnClickListener {
 	
 	private static SliderManager instance;
 	private Cursor contactCursor;
-	private ArrayList<SlideNavigationModel> slideNavigationModels;
+	
 	
 	private SearchListAdapter searchListAdapter;
+	private LayoutInflater mInflater;
 	
-	public SliderManager(Context ctx,ArrayList<SlideNavigationModel> slideNavigationModels)
+	protected ImageLoader imageLoader = ImageLoader.getInstance();
+	 
+	 protected DisplayImageOptions options;
+	 String imgHeader;
+	public SliderManager(Context ctx)
 	{
 		context=ctx;
 	
 		instance = this;
-		this.slideNavigationModels=slideNavigationModels;
+		
 		init();
 		clickListeners();
 		
@@ -82,6 +87,25 @@ public class SliderManager implements OnClickListener {
 		view 					= layoutInflater.inflate(R.layout.slide_search_page, null);
 		btnSearch=(Button)view.findViewById(R.id.btnSearch);
 		lstSlideItems=(ListView)view.findViewById(R.id.lstSlideItems);
+		
+		 mInflater = (LayoutInflater)context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+		 
+		 
+		 
+			options = new DisplayImageOptions.Builder()
+			.showImageOnLoading(R.drawable.cateloading)
+			.showImageForEmptyUri(R.drawable.errorimg)
+			.showImageOnFail(R.drawable.errorimg)
+			.cacheInMemory(true)
+			.cacheOnDisc(true)
+			.considerExifParams(true)
+			.bitmapConfig(Bitmap.Config.RGB_565)
+			.build();
+			
+			ImagePrefixModel tempImagePrefixModel=AppPreferenceManager.getConfigModel(context).getImagePrefixModel();
+			
+			imgHeader=tempImagePrefixModel.getItem_image_path()+tempImagePrefixModel.getImage_thumb_sm();
+			
 	}
 	@SuppressWarnings({ "unused", "deprecation" })
 	private void clickManager()
@@ -95,15 +119,7 @@ public class SliderManager implements OnClickListener {
 		btnSearch.setOnClickListener(this);
 		
 		
-		lstSlideItems.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
-					long arg3) {
-				
-				
-			}
-		});
+		
 	}
 	
 	public SlidingMenu initializeSlidingMenu(View slideButton) 
@@ -113,6 +129,8 @@ public class SliderManager implements OnClickListener {
 		slidingMenu = new SlidingMenu(context);
 		slidingMenu.setMode(SlidingMenu.LEFT);
 		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+		
+		
 		slidingMenu.setBehindWidth((Utils.getDeviceWidth(context))-(slideButton.getWidth()+70));
 		slidingMenu.attachToActivity((Activity) context, SlidingMenu.SLIDING_CONTENT);
 		slidingMenu.setMenu(view);
@@ -138,18 +156,76 @@ public class SliderManager implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		if(v==btnSearch){
-			//NotifyManager.showLongToast(context, ""+slideNavigationModels.size());
+			NotifyManager.showLongToast(context, "");
 		}
 		
 	}
 	
 	private void setData() {
-		ArrayList<SlideNavigationModel> slideNavigationModels=AppPreferenceManager.getConfigModel(context).getSlideNavigationModels();
 		
-		searchListAdapter=new SearchListAdapter(context,  slideNavigationModels);
+		//ArrayList<SlideNavigationModel> slideNavigationModels=AppPreferenceManager.getConfigModel(context).getSlideNavigationModels();
+		
+		
+		
+		final ArrayList<CategoriesModel> categoriesModels=AppPreferenceManager.getConfigModel(context).getCategoriesModels();
+		
+		
+	
+		
+		
+		lstSlideItems.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
+					long arg3) {
+				
+				
+				
+				View header = mInflater.inflate(R.layout.search_item, null);
+				ImageView imgleft=(ImageView)header.findViewById(R.id.imgleft);
+				
+				imgleft.setVisibility(View.VISIBLE);
+				
+				TextView txtName = (TextView) header.findViewById(R.id.txtName);
+				
+				TextView txtCount = (TextView) header.findViewById(R.id.txtcount);
+				
+				ImageView img=(ImageView)header.findViewById(R.id.img);
+				
+				imageLoader.displayImage(imgHeader+categoriesModels.get(pos).getImage(), img,options);
+				txtName.setText(categoriesModels.get(pos).getName());
+				
+				header.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View arg0) {
+						
+						searchListAdapter=new SearchListAdapter(context,  categoriesModels);
+						
+						
+						
+						lstSlideItems.setAdapter(searchListAdapter);
+						
+					}
+				});
+				
+				NotifyManager.showShortToast(context, ""+pos);
+				SearchSubListAdapter searchSubListAdapter=new SearchSubListAdapter(null, categoriesModels.get(pos).getSubCategoriesModels());
+				
+				lstSlideItems.setAdapter(searchSubListAdapter);
+				
+				
+				
+			}
+		});
+		
+		
+		
+		searchListAdapter=new SearchListAdapter(context,  categoriesModels);
+		
+		
 		
 		lstSlideItems.setAdapter(searchListAdapter);
-		
 		
 		
 	}
