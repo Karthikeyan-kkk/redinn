@@ -4,16 +4,19 @@ import java.util.ArrayList;
 
 import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.manager.AppPreferenceManager;
+import com.alkandros.minilnthebox.manager.NotifyManager;
 import com.alkandros.minilnthebox.model.CategoriesModel;
 import com.alkandros.minilnthebox.model.ImagePrefixModel;
 import com.alkandros.minilnthebox.model.SlideNavigationModel;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
@@ -35,6 +38,8 @@ public class SearchListAdapter extends ArrayAdapter<CategoriesModel> {
 	 
 	 String imgHeader;
 	
+	 private ItemClickListner itemClickListner;
+	 
 	public SearchListAdapter(Context context, 
 			ArrayList<CategoriesModel> objects) {
 		super(context, 0, objects);
@@ -58,8 +63,8 @@ public class SearchListAdapter extends ArrayAdapter<CategoriesModel> {
 	}
 	
 	
-	public void setSubCategories(boolean isSub){
-		
+	public void setItemClickListener(ItemClickListner itemClickListner) {
+		this.itemClickListner = itemClickListner;
 	}
 
 
@@ -94,6 +99,17 @@ public class SearchListAdapter extends ArrayAdapter<CategoriesModel> {
 		} else
 
 			holder = (ViewHolder) convertView.getTag();
+		
+		convertView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				
+				itemClickListner.ItemClickListner(position);
+				
+			}
+		});
 
 		
 		
@@ -120,6 +136,14 @@ public class SearchListAdapter extends ArrayAdapter<CategoriesModel> {
 		TextView txtName;
 
 	}
+	
+	public static interface ItemClickListner{
+
+		void ItemClickListner(int position);
+		
+		
+
+}
 
 	
 
