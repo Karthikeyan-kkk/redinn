@@ -21,6 +21,7 @@ import android.widget.ViewFlipper;
 
 import com.alkandros.minilnthebox.R;
 import com.alkandros.minilnthebox.adapter.SearchListAdapter;
+import com.alkandros.minilnthebox.adapter.SearchListAdapter.ItemClickListner;
 import com.alkandros.minilnthebox.adapter.SearchSubListAdapter;
 import com.alkandros.minilnthebox.custom.slidinglib.SlidingMenu;
 import com.alkandros.minilnthebox.model.CategoriesModel;
@@ -57,7 +58,7 @@ public class SliderManager implements OnClickListener {
 	
 	private SearchListAdapter searchListAdapter;
 	private LayoutInflater mInflater;
-	
+	 private View header ;
 	protected ImageLoader imageLoader = ImageLoader.getInstance();
 	 
 	 protected DisplayImageOptions options;
@@ -170,18 +171,28 @@ public class SliderManager implements OnClickListener {
 		final ArrayList<CategoriesModel> categoriesModels=AppPreferenceManager.getConfigModel(context).getCategoriesModels();
 		
 		
+		
+		
+		
 	
 		
 		
-		lstSlideItems.setOnItemClickListener(new OnItemClickListener() {
-
+		searchListAdapter=new SearchListAdapter(context,  categoriesModels);
+		
+		lstSlideItems.setAdapter(null);
+		
+		lstSlideItems.setAdapter(searchListAdapter);
+		
+		searchListAdapter.setItemClickListener(new ItemClickListner() {
+			
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
-					long arg3) {
+			public void ItemClickListner(int pos) {
+				
+				NotifyManager.showShortToast(context, ""+categoriesModels.get(pos).getSubCategoriesModels().size());
+
 				
 				
-				
-				View header = mInflater.inflate(R.layout.search_item, null);
+				 header = mInflater.inflate(R.layout.search_item, null);
 				ImageView imgleft=(ImageView)header.findViewById(R.id.imgleft);
 				
 				imgleft.setVisibility(View.VISIBLE);
@@ -200,17 +211,19 @@ public class SliderManager implements OnClickListener {
 					@Override
 					public void onClick(View arg0) {
 						
-						searchListAdapter=new SearchListAdapter(context,  categoriesModels);
+						lstSlideItems.removeHeaderView(header);
 						
-						
-						
-						lstSlideItems.setAdapter(searchListAdapter);
+						setData();
 						
 					}
 				});
 				
-				NotifyManager.showShortToast(context, ""+pos);
-				SearchSubListAdapter searchSubListAdapter=new SearchSubListAdapter(null, categoriesModels.get(pos).getSubCategoriesModels());
+				
+				SearchSubListAdapter searchSubListAdapter=new SearchSubListAdapter(context, categoriesModels.get(pos).getSubCategoriesModels());
+				
+				
+				lstSlideItems.setAdapter(null);
+				lstSlideItems.addHeaderView(header);
 				
 				lstSlideItems.setAdapter(searchSubListAdapter);
 				
@@ -218,14 +231,6 @@ public class SliderManager implements OnClickListener {
 				
 			}
 		});
-		
-		
-		
-		searchListAdapter=new SearchListAdapter(context,  categoriesModels);
-		
-		
-		
-		lstSlideItems.setAdapter(searchListAdapter);
 		
 		
 	}
