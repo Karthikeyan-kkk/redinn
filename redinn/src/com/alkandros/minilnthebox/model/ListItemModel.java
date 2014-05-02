@@ -1,9 +1,15 @@
 package com.alkandros.minilnthebox.model;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 //Get Item.. Component
-public class ListItemModel implements Serializable {
+public class ListItemModel implements Serializable, Comparator<ListItemModel> {
+	
+	
+	 public enum SortOrder {ASCENDING, DESCENDING}
+	 
+	 private SortOrder sortOrder;
 
 	private String id = "";
 	private String name = "";
@@ -15,6 +21,10 @@ public class ListItemModel implements Serializable {
 	private String item_image = "";
 
 	private PriceModel model = new PriceModel();
+	
+	 public ListItemModel(SortOrder sortOrder) {
+		    this.sortOrder = sortOrder;
+		  }
 
 	public String getId() {
 		return id;
@@ -78,6 +88,22 @@ public class ListItemModel implements Serializable {
 
 	public void setPriceModel(PriceModel model) {
 		this.model = model;
+	}
+
+	
+
+	@Override
+	public int compare(ListItemModel arg0, ListItemModel arg1) {
+		
+		 Integer model1 = Integer.parseInt(arg0.getPriceModel().getPrice());
+		    Integer model2 = Integer.parseInt(arg1.getPriceModel().getPrice());
+		    int compare = (int) Math.signum(model1.compareTo(model2));
+
+		    if (sortOrder == SortOrder.ASCENDING) {
+		      return compare;
+		    } else {
+		      return compare * (-1);
+		    }
 	}
 
 }

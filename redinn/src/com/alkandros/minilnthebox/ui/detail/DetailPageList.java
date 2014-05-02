@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -53,8 +54,11 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 	private MultipleListAdapter multipleListAdapter;
 	private ApiManager apiManager;
 	private ArrayList<ListItemModel> arrayListItemModels;
+	private ArrayList<ListItemModel> arrayListItemModelsFilter;
 	private ApiManager2 apiManager2;
 	String catID, subCatID;
+
+	RelativeLayout relSort;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -149,9 +153,8 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 						arrayListItemModels.add(listItemModel);
 					}
 
-					setData();
-					System.out.println("Size==List"
-							+ arrayListItemModels.size());
+					setData(arrayListItemModels);
+					
 
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -164,215 +167,12 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 
 	}
 
-	private void setData() {
+	private void setData(ArrayList<ListItemModel> listItemModels) {
 
-		ArrayList<TestModel> testModels = new ArrayList<TestModel>();
-
-		testModels
-				.add(new TestModel("ONE",
-						"http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-2.jpg"));
-		testModels
-				.add(new TestModel("ONE1",
-						"http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-7.jpg"));
-		testModels
-				.add(new TestModel(
-						"ONE2",
-						"http://bloximages.chicago2.vip.townnews.com/azstarnet.com/content/tncms/assets/v3/business/b/4f/b4fcd1e8-2e38-50c0-857d-0fbe466c3d68/50b777e089212.image.jpg"));
-		testModels
-				.add(new TestModel("ONE3",
-						"http://im.tech2.in.com/gallery/2012/dec/stockimage_070930177527_640x360.jpg"));
-		testModels
-				.add(new TestModel(
-						"ONE4",
-						"http://1.bp.blogspot.com/-C-NVc1o7sxM/UlnzHPCYwbI/AAAAAAAAGQI/0Qk12eDMSdg/s640/nhung-hinh-anh-dep-de-thuong-nhat-6.jpeg"));
-		testModels
-				.add(new TestModel(
-						"ONE5",
-						"http://static3.businessinsider.com/image/52cddfb169beddee2a6c2246/the-29-coolest-us-air-force-images-of-the-year.jpg"));
-		testModels
-				.add(new TestModel(
-						"ONE6",
-						"http://img.xcitefun.net/users/2013/11/343324,xcitefun-creative-edited-images-digital-wizardry-.jpg"));
-		testModels
-				.add(new TestModel(
-						"ONE7",
-						"http://2.bp.blogspot.com/-PnWhMJrjdNY/T043tW4cLyI/AAAAAAAAMHk/J7ZnMEdeyPI/s1600/bm-image-733729.jpeg"));
-		testModels
-				.add(new TestModel(
-						"ONE8",
-						"http://crispyclicks.com/wp-content/uploads/2013/03/weird-images-weird-pictures-floating-in-the-air-4.jpg"));
-		testModels
-				.add(new TestModel(
-						"ONE9",
-						"http://static.indianexpress.com/m-images/Wed%20Nov%2013%202013,%2014:24%20hrs/M_Id_438809_Saturn_image.jpg"));
-		testModels
-				.add(new TestModel(
-						"ONE10",
-						"http://images4.fanpop.com/image/photos/22300000/coolest-random-22350423-1600-1200.jpg"));
-		testModels
-				.add(new TestModel("ONE11",
-						"http://www.abc.net.au/radionational/image/4220698-3x2-700x467.jpg"));
-		testModels
-				.add(new TestModel(
-						"ONE12",
-						"http://www.davidgaledigital.co.uk/wp-content/uploads/2014/04/best_images_of_2012_1355117665_1355117684.jpg"));
-		testModels
-				.add(new TestModel("ONE13",
-						"http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-2.jpg"));
-		/*
-		 * testModels.add(new TestModel("ONE",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-2.jpg"
-		 * )); testModels.add(new TestModel("ONE1",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-7.jpg"
-		 * )); testModels.add(new TestModel("ONE2",
-		 * "http://bloximages.chicago2.vip.townnews.com/azstarnet.com/content/tncms/assets/v3/business/b/4f/b4fcd1e8-2e38-50c0-857d-0fbe466c3d68/50b777e089212.image.jpg"
-		 * )); testModels.add(new TestModel("ONE3",
-		 * "http://im.tech2.in.com/gallery/2012/dec/stockimage_070930177527_640x360.jpg"
-		 * )); testModels.add(new TestModel("ONE4",
-		 * "http://1.bp.blogspot.com/-C-NVc1o7sxM/UlnzHPCYwbI/AAAAAAAAGQI/0Qk12eDMSdg/s640/nhung-hinh-anh-dep-de-thuong-nhat-6.jpeg"
-		 * )); testModels.add(new TestModel("ONE5",
-		 * "http://static3.businessinsider.com/image/52cddfb169beddee2a6c2246/the-29-coolest-us-air-force-images-of-the-year.jpg"
-		 * )); testModels.add(new TestModel("ONE6",
-		 * "http://img.xcitefun.net/users/2013/11/343324,xcitefun-creative-edited-images-digital-wizardry-.jpg"
-		 * )); testModels.add(new TestModel("ONE7",
-		 * "http://2.bp.blogspot.com/-PnWhMJrjdNY/T043tW4cLyI/AAAAAAAAMHk/J7ZnMEdeyPI/s1600/bm-image-733729.jpeg"
-		 * )); testModels.add(new TestModel("ONE8",
-		 * "http://crispyclicks.com/wp-content/uploads/2013/03/weird-images-weird-pictures-floating-in-the-air-4.jpg"
-		 * )); testModels.add(new TestModel("ONE9",
-		 * "http://static.indianexpress.com/m-images/Wed%20Nov%2013%202013,%2014:24%20hrs/M_Id_438809_Saturn_image.jpg"
-		 * )); testModels.add(new TestModel("ONE10",
-		 * "http://images4.fanpop.com/image/photos/22300000/coolest-random-22350423-1600-1200.jpg"
-		 * )); testModels.add(new TestModel("ONE11",
-		 * "http://www.abc.net.au/radionational/image/4220698-3x2-700x467.jpg"
-		 * )); testModels.add(new TestModel("ONE12",
-		 * "http://www.davidgaledigital.co.uk/wp-content/uploads/2014/04/best_images_of_2012_1355117665_1355117684.jpg"
-		 * )); testModels.add(new TestModel("ONE13",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-2.jpg"
-		 * ));
-		 * 
-		 * testModels.add(new TestModel("ONE",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-2.jpg"
-		 * )); testModels.add(new TestModel("ONE1",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-7.jpg"
-		 * )); testModels.add(new TestModel("ONE2",
-		 * "http://bloximages.chicago2.vip.townnews.com/azstarnet.com/content/tncms/assets/v3/business/b/4f/b4fcd1e8-2e38-50c0-857d-0fbe466c3d68/50b777e089212.image.jpg"
-		 * )); testModels.add(new TestModel("ONE3",
-		 * "http://im.tech2.in.com/gallery/2012/dec/stockimage_070930177527_640x360.jpg"
-		 * )); testModels.add(new TestModel("ONE4",
-		 * "http://1.bp.blogspot.com/-C-NVc1o7sxM/UlnzHPCYwbI/AAAAAAAAGQI/0Qk12eDMSdg/s640/nhung-hinh-anh-dep-de-thuong-nhat-6.jpeg"
-		 * )); testModels.add(new TestModel("ONE5",
-		 * "http://static3.businessinsider.com/image/52cddfb169beddee2a6c2246/the-29-coolest-us-air-force-images-of-the-year.jpg"
-		 * )); testModels.add(new TestModel("ONE6",
-		 * "http://img.xcitefun.net/users/2013/11/343324,xcitefun-creative-edited-images-digital-wizardry-.jpg"
-		 * )); testModels.add(new TestModel("ONE7",
-		 * "http://2.bp.blogspot.com/-PnWhMJrjdNY/T043tW4cLyI/AAAAAAAAMHk/J7ZnMEdeyPI/s1600/bm-image-733729.jpeg"
-		 * )); testModels.add(new TestModel("ONE8",
-		 * "http://crispyclicks.com/wp-content/uploads/2013/03/weird-images-weird-pictures-floating-in-the-air-4.jpg"
-		 * )); testModels.add(new TestModel("ONE9",
-		 * "http://static.indianexpress.com/m-images/Wed%20Nov%2013%202013,%2014:24%20hrs/M_Id_438809_Saturn_image.jpg"
-		 * )); testModels.add(new TestModel("ONE10",
-		 * "http://images4.fanpop.com/image/photos/22300000/coolest-random-22350423-1600-1200.jpg"
-		 * )); testModels.add(new TestModel("ONE11",
-		 * "http://www.abc.net.au/radionational/image/4220698-3x2-700x467.jpg"
-		 * )); testModels.add(new TestModel("ONE12",
-		 * "http://www.davidgaledigital.co.uk/wp-content/uploads/2014/04/best_images_of_2012_1355117665_1355117684.jpg"
-		 * )); testModels.add(new TestModel("ONE13",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-2.jpg"
-		 * ));
-		 * 
-		 * testModels.add(new TestModel("ONE",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-2.jpg"
-		 * )); testModels.add(new TestModel("ONE1",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-7.jpg"
-		 * )); testModels.add(new TestModel("ONE2",
-		 * "http://bloximages.chicago2.vip.townnews.com/azstarnet.com/content/tncms/assets/v3/business/b/4f/b4fcd1e8-2e38-50c0-857d-0fbe466c3d68/50b777e089212.image.jpg"
-		 * )); testModels.add(new TestModel("ONE3",
-		 * "http://im.tech2.in.com/gallery/2012/dec/stockimage_070930177527_640x360.jpg"
-		 * )); testModels.add(new TestModel("ONE4",
-		 * "http://1.bp.blogspot.com/-C-NVc1o7sxM/UlnzHPCYwbI/AAAAAAAAGQI/0Qk12eDMSdg/s640/nhung-hinh-anh-dep-de-thuong-nhat-6.jpeg"
-		 * )); testModels.add(new TestModel("ONE5",
-		 * "http://static3.businessinsider.com/image/52cddfb169beddee2a6c2246/the-29-coolest-us-air-force-images-of-the-year.jpg"
-		 * )); testModels.add(new TestModel("ONE6",
-		 * "http://img.xcitefun.net/users/2013/11/343324,xcitefun-creative-edited-images-digital-wizardry-.jpg"
-		 * )); testModels.add(new TestModel("ONE7",
-		 * "http://2.bp.blogspot.com/-PnWhMJrjdNY/T043tW4cLyI/AAAAAAAAMHk/J7ZnMEdeyPI/s1600/bm-image-733729.jpeg"
-		 * )); testModels.add(new TestModel("ONE8",
-		 * "http://crispyclicks.com/wp-content/uploads/2013/03/weird-images-weird-pictures-floating-in-the-air-4.jpg"
-		 * )); testModels.add(new TestModel("ONE9",
-		 * "http://static.indianexpress.com/m-images/Wed%20Nov%2013%202013,%2014:24%20hrs/M_Id_438809_Saturn_image.jpg"
-		 * )); testModels.add(new TestModel("ONE10",
-		 * "http://images4.fanpop.com/image/photos/22300000/coolest-random-22350423-1600-1200.jpg"
-		 * )); testModels.add(new TestModel("ONE11",
-		 * "http://www.abc.net.au/radionational/image/4220698-3x2-700x467.jpg"
-		 * )); testModels.add(new TestModel("ONE12",
-		 * "http://www.davidgaledigital.co.uk/wp-content/uploads/2014/04/best_images_of_2012_1355117665_1355117684.jpg"
-		 * )); testModels.add(new TestModel("ONE13",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-2.jpg"
-		 * ));
-		 * 
-		 * testModels.add(new TestModel("ONE",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-2.jpg"
-		 * )); testModels.add(new TestModel("ONE1",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-7.jpg"
-		 * )); testModels.add(new TestModel("ONE2",
-		 * "http://bloximages.chicago2.vip.townnews.com/azstarnet.com/content/tncms/assets/v3/business/b/4f/b4fcd1e8-2e38-50c0-857d-0fbe466c3d68/50b777e089212.image.jpg"
-		 * )); testModels.add(new TestModel("ONE3",
-		 * "http://im.tech2.in.com/gallery/2012/dec/stockimage_070930177527_640x360.jpg"
-		 * )); testModels.add(new TestModel("ONE4",
-		 * "http://1.bp.blogspot.com/-C-NVc1o7sxM/UlnzHPCYwbI/AAAAAAAAGQI/0Qk12eDMSdg/s640/nhung-hinh-anh-dep-de-thuong-nhat-6.jpeg"
-		 * )); testModels.add(new TestModel("ONE5",
-		 * "http://static3.businessinsider.com/image/52cddfb169beddee2a6c2246/the-29-coolest-us-air-force-images-of-the-year.jpg"
-		 * )); testModels.add(new TestModel("ONE6",
-		 * "http://img.xcitefun.net/users/2013/11/343324,xcitefun-creative-edited-images-digital-wizardry-.jpg"
-		 * )); testModels.add(new TestModel("ONE7",
-		 * "http://2.bp.blogspot.com/-PnWhMJrjdNY/T043tW4cLyI/AAAAAAAAMHk/J7ZnMEdeyPI/s1600/bm-image-733729.jpeg"
-		 * )); testModels.add(new TestModel("ONE8",
-		 * "http://crispyclicks.com/wp-content/uploads/2013/03/weird-images-weird-pictures-floating-in-the-air-4.jpg"
-		 * )); testModels.add(new TestModel("ONE9",
-		 * "http://static.indianexpress.com/m-images/Wed%20Nov%2013%202013,%2014:24%20hrs/M_Id_438809_Saturn_image.jpg"
-		 * )); testModels.add(new TestModel("ONE10",
-		 * "http://images4.fanpop.com/image/photos/22300000/coolest-random-22350423-1600-1200.jpg"
-		 * )); testModels.add(new TestModel("ONE11",
-		 * "http://www.abc.net.au/radionational/image/4220698-3x2-700x467.jpg"
-		 * )); testModels.add(new TestModel("ONE12",
-		 * "http://www.davidgaledigital.co.uk/wp-content/uploads/2014/04/best_images_of_2012_1355117665_1355117684.jpg"
-		 * )); testModels.add(new TestModel("ONE13",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-2.jpg"
-		 * ));
-		 * 
-		 * testModels.add(new TestModel("ONE",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-2.jpg"
-		 * )); testModels.add(new TestModel("ONE1",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-7.jpg"
-		 * )); testModels.add(new TestModel("ONE2",
-		 * "http://bloximages.chicago2.vip.townnews.com/azstarnet.com/content/tncms/assets/v3/business/b/4f/b4fcd1e8-2e38-50c0-857d-0fbe466c3d68/50b777e089212.image.jpg"
-		 * )); testModels.add(new TestModel("ONE3",
-		 * "http://im.tech2.in.com/gallery/2012/dec/stockimage_070930177527_640x360.jpg"
-		 * )); testModels.add(new TestModel("ONE4",
-		 * "http://1.bp.blogspot.com/-C-NVc1o7sxM/UlnzHPCYwbI/AAAAAAAAGQI/0Qk12eDMSdg/s640/nhung-hinh-anh-dep-de-thuong-nhat-6.jpeg"
-		 * )); testModels.add(new TestModel("ONE5",
-		 * "http://static3.businessinsider.com/image/52cddfb169beddee2a6c2246/the-29-coolest-us-air-force-images-of-the-year.jpg"
-		 * )); testModels.add(new TestModel("ONE6",
-		 * "http://img.xcitefun.net/users/2013/11/343324,xcitefun-creative-edited-images-digital-wizardry-.jpg"
-		 * )); testModels.add(new TestModel("ONE7",
-		 * "http://2.bp.blogspot.com/-PnWhMJrjdNY/T043tW4cLyI/AAAAAAAAMHk/J7ZnMEdeyPI/s1600/bm-image-733729.jpeg"
-		 * )); testModels.add(new TestModel("ONE8",
-		 * "http://crispyclicks.com/wp-content/uploads/2013/03/weird-images-weird-pictures-floating-in-the-air-4.jpg"
-		 * )); testModels.add(new TestModel("ONE9",
-		 * "http://static.indianexpress.com/m-images/Wed%20Nov%2013%202013,%2014:24%20hrs/M_Id_438809_Saturn_image.jpg"
-		 * )); testModels.add(new TestModel("ONE10",
-		 * "http://images4.fanpop.com/image/photos/22300000/coolest-random-22350423-1600-1200.jpg"
-		 * )); testModels.add(new TestModel("ONE11",
-		 * "http://www.abc.net.au/radionational/image/4220698-3x2-700x467.jpg"
-		 * )); testModels.add(new TestModel("ONE12",
-		 * "http://www.davidgaledigital.co.uk/wp-content/uploads/2014/04/best_images_of_2012_1355117665_1355117684.jpg"
-		 * )); testModels.add(new TestModel("ONE13",
-		 * "http://www.wallpaperfunda.com/wp-content/uploads/2014/03/images-2.jpg"
-		 * ));
-		 */
+		
 
 		multipleListAdapter = new MultipleListAdapter(activity,
-				arrayListItemModels);
+				listItemModels);
 
 		gridList.setAdapter(multipleListAdapter);
 	}
@@ -389,6 +189,7 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 		txtSort = (TextView) findViewById(R.id.txtSort);
 		txtRefine = (TextView) findViewById(R.id.txtRefine);
 		gridList = (GridView) findViewById(R.id.gridList);
+		relSort = (RelativeLayout) findViewById(R.id.relSort);
 
 	}
 
@@ -433,76 +234,79 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 
 		} else if (v == txtSort) {
 
-			showSortPopup(activity);
+			
+			//arrayListItemModels
+			View view = LayoutInflater.from(this).inflate(R.layout.sort_popup,null);
+
+			final Dialog sortDialog=NotifyManager.showBottomAnimatedAlert(view, activity);
+			
+			RelativeLayout bls_1_vg=(RelativeLayout)view.findViewById(R.id.bls_1_vg);
+			RelativeLayout bls_2_vg=(RelativeLayout)view.findViewById(R.id.bls_2_vg);
+			RelativeLayout bls_3_vg=(RelativeLayout)view.findViewById(R.id.bls_3_vg);
+			RelativeLayout bls_4_vg=(RelativeLayout)view.findViewById(R.id.bls_4_vg);
+			
+			
+			
+			
+			bls_1_vg.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					sortDialog.dismiss();
+					
+					setData(arrayListItemModels);
+					
+				}
+			});
+
+			bls_2_vg.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					sortDialog.dismiss();
+					
+				}
+			});
+
+			bls_3_vg.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					sortDialog.dismiss();
+					
+					
+					
+				}
+			});
+
+			bls_4_vg.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					sortDialog.dismiss();
+					
+					arrayListItemModelsFilter=new ArrayList<ListItemModel>();
+					for (ListItemModel item : arrayListItemModels) {
+						
+						if(item.isIsnew()){
+							arrayListItemModelsFilter.add(item);
+						}
+						
+					}
+					
+					setData(arrayListItemModelsFilter);
+					
+				}
+			});
+			
+		
 
 		} else if (v == txtRefine) {
-			NotifyManager.showShortToast(activity, "Refine");
-			/*
-			 * multipleListAdapter.setViewType(0);
-			 * gridList.setAdapter(multipleListAdapter);
-			 */
+
 		} else if (v == getBtnLeft()) {
 
 			finishActivity();
 		}
-
-	}
-
-	public void showSortPopup(final Context activity) {
-
-		LayoutInflater inflater = (LayoutInflater) this
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View view = inflater.inflate(R.layout.sort_popup, null, false);
-
-		final PopupWindow pw = new PopupWindow(view, LayoutParams.WRAP_CONTENT,
-				LayoutParams.WRAP_CONTENT, true);
-
-		RelativeLayout rel1 = (RelativeLayout) view.findViewById(R.id.rel1);
-		RelativeLayout rel2 = (RelativeLayout) view.findViewById(R.id.rel2);
-		RelativeLayout rel3 = (RelativeLayout) view.findViewById(R.id.rel3);
-		RelativeLayout rel4 = (RelativeLayout) view.findViewById(R.id.rel4);
-
-		rel1.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				pw.dismiss();
-			}
-		});
-
-		rel2.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				pw.dismiss();
-			}
-		});
-
-		rel3.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				pw.dismiss();
-			}
-		});
-
-		rel4.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				pw.dismiss();
-			}
-		});
-
-		
-		
-		 
-		pw.showAtLocation(view, Gravity.BOTTOM, 0, 0);
-		
 
 	}
 
