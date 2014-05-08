@@ -8,11 +8,14 @@ import org.json.JSONObject;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -199,6 +202,19 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 		txtRefine.setOnClickListener(this);
 
 		getBtnLeft().setOnClickListener(this);
+		
+		gridList.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
+					long arg3) {
+				intent=new  Intent(activity,DetailPage.class);
+				intent.putExtra("ID", multipleListAdapter.getItem(pos).getId());
+				
+				startBaseActivity(intent);
+				
+			}
+		});
 
 	}
 
