@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 
 //Get Item.. Component
-public class ListItemModel implements Serializable, Comparator<ListItemModel> {
+public class ListItemModel implements Serializable/*, Comparator<ListItemModel>*/, Comparable<ListItemModel> {
 	
 	
 	 public enum SortOrder {ASCENDING, DESCENDING}
@@ -90,8 +90,35 @@ public class ListItemModel implements Serializable, Comparator<ListItemModel> {
 		this.model = model;
 	}
 
+	/*@Override
+	public int compareTo(ListItemModel o) {
+		 int result = this.name.compareToIgnoreCase(o.name);
+	        if(result != 0){
+	            return result;
+	        }else{
+	            //return Float.parseFloat(this.getPriceModel().getPrice()).compareTo( Float.parseFloat(o.getPriceModel().getPrice()));
+	        	
+	        	float tempa=Float.parseFloat(this.getPriceModel().getPrice());
+	        	float tempb=Float.parseFloat(o.getPriceModel().getPrice());
+	        	
+	        	return  (tempa>tempb)? 1:0;
+	        }
+	}*/
+	
+	 @Override
+	  public int compareTo(ListItemModel o) {
+		 
+		 float tempa=Float.parseFloat(this.getPriceModel().getPrice());
+     	float tempb=Float.parseFloat(o.getPriceModel().getPrice());
+     	
+     	
+	    return tempa > tempb? -1 : 1;
+	  }
+	
 	
 
+	
+/*
 	@Override
 	public int compare(ListItemModel arg0, ListItemModel arg1) {
 		
@@ -104,6 +131,6 @@ public class ListItemModel implements Serializable, Comparator<ListItemModel> {
 		    } else {
 		      return compare * (-1);
 		    }
-	}
+	}*/
 
 }
