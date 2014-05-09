@@ -58,6 +58,7 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 	private LinearLayout linGrid2;
 	private LinearLayout linGrid3;
 	int width=0;
+	int height=0;
 	
 	private LinearLayout linCategories;
 	LayoutInflater inflaterCategories;
@@ -188,6 +189,9 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 				}
 			});
         	
+        	
+        	//ViewUtils.setViewHeight(convertView, height);
+        	
         	linCategories.addView(convertView);
 			
 		}
@@ -244,13 +248,18 @@ public class HomeFragment extends BaseFragment implements OnClickListener{
 		
 		width=Utils.getDeviceWidth(context)/3;
 		
+		
 		ViewUtils.setViewHeight(linGrid1, width);
 		ViewUtils.setViewHeight(linGrid2, width);
 		ViewUtils.setViewHeight(linGrid3, width);
 		
+		height=Utils.getDeviceHeight(context)/4;
+		
 		autoScrollViewPager=(AutoScrollViewPager)view.findViewById(R.id.view_pager);
 		circlePageIndicator=(CirclePageIndicator)view.findViewById(R.id.indicator);
 		
+		
+		ViewUtils.setViewHeight(autoScrollViewPager, height);
 		
 		
 		linCategories=(LinearLayout)view.findViewById(R.id.linCategories);
