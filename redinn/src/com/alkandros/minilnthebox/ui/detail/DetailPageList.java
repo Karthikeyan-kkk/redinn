@@ -29,6 +29,7 @@ import com.alkandros.minilnthebox.adapter.MultipleListAdapter;
 import com.alkandros.minilnthebox.baseclass.BaseActivity;
 import com.alkandros.minilnthebox.baseclass.MyApplication;
 import com.alkandros.minilnthebox.constants.IJsonConstants;
+import com.alkandros.minilnthebox.constants.IRequestConstants;
 import com.alkandros.minilnthebox.constants.IUrlConstants;
 import com.alkandros.minilnthebox.manager.ApiManager;
 import com.alkandros.minilnthebox.manager.ApiManager.ApiJsonArrayResponseListner;
@@ -62,6 +63,11 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 	String catID, subCatID;
 
 	RelativeLayout relSort;
+	
+	float minPrice=0, maxPrice=0;
+	float minPriceRef=0, maxPriceRef=0; 
+	
+	String currencySymbol;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -87,12 +93,17 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 	}
 
 	private void callGetSublistApi(String catID, String subCatID) {
+		
+		minPrice=0;
+		maxPrice=0;
 
 		final MyApplication myApplication = (MyApplication) getApplicationContext();
 		ConfigModel configModel = myApplication.getConfigModel();
 
 		final CurrencyModel currencyModel = configModel.getCurrencyModel();
 
+		currencySymbol=currencyModel.getSymbol();
+		
 		arrayListItemModels = new ArrayList<ListItemModel>();
 		apiManager2 = new ApiManager2(IUrlConstants.GET_ITEMS_BY_SUB_CATEGORY
 				+ subCatID + "/" + catID, new String[] { "" },
@@ -138,21 +149,35 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 
 						listItemModel.setPriceModel(priceModel);
 
-						System.out.println("**********" + i
-								+ "**********************");
+						
+						float tempPrice=Float.parseFloat(priceModel.getPrice());
+						
+						
+						
+						if(tempPrice<minPrice){
+							minPrice=tempPrice;
+							
+						}
+						
+						if(tempPrice>maxPrice){
+							maxPrice=tempPrice;
+						}
+						
 
-						System.out.println("ID " + listItemModel.getId());
-						System.out.println("IMG "
-								+ listItemModel.getItem_image());
-						System.out.println("NAme " + listItemModel.getName());
-						System.out.println("Rat " + listItemModel.getRating());
-						System.out.println("Stock "
-								+ listItemModel.getTotalstock());
-						System.out.println("Price "
-								+ listItemModel.getPriceModel().getPrice());
-
-						System.out
-								.println("*************************************");
+						if(minPrice==0){
+							minPrice=tempPrice;
+						}
+						
+						if(maxPrice==0){
+							maxPrice=tempPrice;
+						}
+						
+						
+						
+						
+						
+						
+						
 						arrayListItemModels.add(listItemModel);
 					}
 
@@ -318,12 +343,58 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 		
 
 		} else if (v == txtRefine) {
+			
+			intent=new Intent(activity,RefineActivity.class);
+			
+			intent.putExtra("MIN_PRICE", minPrice);
+			intent.putExtra("MAX_PRICE", maxPrice);
+			
+			intent.putExtra("SYMBOL", currencySymbol);
+			
+			if(maxPrice>0)
+			startBaseActivityForResults(intent, IRequestConstants.REFINE_CODE);
+			
+			
 
 		} else if (v == getBtnLeft()) {
 
 			finishActivity();
 		}
 
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		if((requestCode==IRequestConstants.REFINE_CODE) && (resultCode==IRequestConstants.REFINE_CODE)){
+			
+			
+			minPriceRef = data.getFloatExtra("MIN_PRICE",0);
+			maxPriceRef = data.getFloatExtra("MAX_PRICE",0);
+			
+			System.out.println("MIN= "+minPriceRef);
+			System.out.println("MAX= "+maxPriceRef);
+			
+			arrayListItemModelsFilter=new ArrayList<ListItemModel>();
+			for (ListItemModel item : arrayListItemModels) {
+				
+				float tempPrice=Float.parseFloat(item.getPriceModel().getPrice());
+				
+				if((tempPrice >=minPriceRef)&&(tempPrice<=maxPriceRef)){
+					arrayListItemModelsFilter.add(item);
+				}
+				
+			}
+			
+			setData(arrayListItemModelsFilter);
+			
+			
+			
+		}
+		
+		
 	}
 
 }

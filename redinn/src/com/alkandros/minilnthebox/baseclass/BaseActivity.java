@@ -23,13 +23,16 @@ public class BaseActivity extends Activity {
 	private TextView title;
 	private TextView txtcartCount;
 
+	public Bundle extras;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
 		activity = this;
-
+		extras = getIntent().getExtras();
 	}
 
 	public void setHeaderIntialize() {
@@ -89,6 +92,12 @@ public class BaseActivity extends Activity {
 		this.startActivity(i);
 		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
+	
+	public void startBaseActivityForResults(Intent i,int reqID) {
+
+		this.startActivityForResult(i, reqID);
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+	}
 
 	@Override
 	protected void onDestroy() {
@@ -114,6 +123,9 @@ public class BaseActivity extends Activity {
 		this.overridePendingTransition(R.anim.push_right_in,
 				R.anim.push_right_out);
 	}
+	
+	
+	
 
 	
 
