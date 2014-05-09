@@ -1,6 +1,8 @@
 package com.alkandros.minilnthebox.ui.detail;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -305,6 +307,25 @@ public class DetailPageList extends BaseActivity implements OnClickListener {
 				@Override
 				public void onClick(View arg0) {
 					sortDialog.dismiss();
+					System.out.println("*******************");
+					System.out.println("BEFORe sort ");
+				for (ListItemModel iterable_element : arrayListItemModels) {
+					
+					
+					System.out.println("PRIce = "+iterable_element.getPriceModel().getPrice());
+				}
+					
+					
+					
+					Collections.sort(arrayListItemModels);
+					System.out.println("*******************");
+					System.out.println("Afer sort ");
+					
+					for (ListItemModel iterable_element : arrayListItemModels) {
+						
+						
+						System.out.println("PRIce = "+iterable_element.getPriceModel().getPrice());
+					}
 					
 				}
 			});
