@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/top_bg" >
+
+    <!--
+         <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+    -->
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/titlestyle"
+        android:layout_marginLeft="5.0dip"
+        android:layout_marginRight="5.0dip"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/leftIcon"
+        style="@style/leftstyle" />
+
+    <ImageView
+        android:id="@+id/rightIcon"
+        style="@style/rightstyle" />
+
+    <TextView
+        android:id="@+id/txtcartCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12.0dip"
+        android:layout_marginTop="1.0dip"
+        android:background="@drawable/indicator_bg"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="3"
+        android:textColor="#ffffffff"
+        android:textSize="10.0sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MinilnTheBox</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="search">Search</string>
+    
+    
+    <!-- Home Page  -->
+    
+    <string name="best_sellers">Best Sellers</string>
+    <string name="new_arrivals">New Arrivals</string>
+    <string name="unnder_1.99">Under &#36; 1.99</string>
+    
+    
+    
+    
+     <!-- Error Msg -->
+    
+    <string name="common_error_message">Cannot continue at this time. Please try again later.</string>
+    <string name="connection_error_message">Please Check your connection and try again.</string>
+     <string name="server_error_message">Server err.</string>
+     
+     
+     
+     
+     <!-- List Page -->
+     
+     <string name="Sort">Sort</string>
+     <string name="Refine">Refine</string>
+     
+     
+      <!-- Setting  Page -->
+     
+     <string name="Setting">Setting</string>
+     <string name="Country">Country</string>
+       <string name="Language">Language</string>
+       <string name="Currency">Currency</string>
+       <string name="AboutUs">About us</string>
+       <string name="ReturnPolicy">Return Policy</string>
+       <string name="PrivacyPolicy">Privacy Policy</string>
+       <string name="TermsofUse">Terms of Use</string>
+       <string name="Payment">Payment</string>
+       <string name="Shipping">Shipping</string>
+       
+          <!-- Me  Page -->
+          <string name="Me">Me</string>
+       <string name="MyAccount">My Account</string>
+        <string name="MyOrders">My Orders</string>
+    <string name="MyFavorites">My Favorites</string>
+    <string name="AddressBook">Address Book</string>
+    
+    <string name="signin">Sign In</string>
+    
+    <string name="logout">Log Out</string>
+    
+    <!--Specification PAge  -->
+    
+    <string name="specifications">Specifications</string>
+    
+    <!-- Detail PAge -->
+    <string name="AddToCart">Add to Cart</string>
+     <string name="Shipsinhours">Ships in 24 hours</string>
+     <string name="FreeShipping">Free Shipping</string>
+
+</resources>

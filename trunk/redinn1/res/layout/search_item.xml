@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+   >
+    
+    <RelativeLayout 
+        android:id="@+id/Retitile"
+          android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        
+        
+        
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Retitile"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+         android:background="@drawable/bg_search_city_bar" 
+        >
+
+        <ImageView  
+            android:id="@+id/imgleft"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+             android:layout_width="wrap_content"
+             android:background="@drawable/left_arrow"
+             android:visibility="invisible"
+        android:layout_height="wrap_content"/>
+        
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imgleft"
+            android:layout_toLeftOf="@+id/img"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:freezesText="true"
+            android:gravity="left"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="KFJLKFLK"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/txtcount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/txtName"
+            android:layout_below="@+id/txtName"
+            android:layout_marginTop="2dp"
+            android:text="(5023)"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/grey"
+            android:textSize="8sp" />
+        
+        
+        <ImageView
+        android:id="@+id/img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/errorimg" />
+    </RelativeLayout>
+    
+    
+
+    
+
+</RelativeLayout>
