@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout 
+          android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:padding="10dp"
+        >
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search9"
+       
+        android:text="@string/search"
+        android:gravity="left|center_vertical"
+        />
+    
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lstSlideItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:background="@color/white"
+        android:divider="@color/grey"
+        android:dividerHeight="2dp"
+        
+        />
+    
+
+</LinearLayout>

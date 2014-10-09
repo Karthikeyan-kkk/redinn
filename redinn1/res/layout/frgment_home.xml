@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_grey" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/include1" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <com.alkandros.minilnthebox.custom.autoscrollviewadapter.AutoScrollViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/home_banner_height"
+                android:background="@drawable/bg_home_defaultpic" />
+
+            <com.alkandros.minilnthebox.custom.viewpagerindicator.CirclePageIndicator
+                android:id="@+id/indicator"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/view_pager"
+                android:padding="10dip" />
+
+            <LinearLayout
+                android:id="@+id/linCategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_pager"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:orientation="vertical" >
+<!-- 
+                <LinearLayout
+                    android:id="@+id/linBestSeller"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/home_items"
+                    android:background="@drawable/inputbg"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/txtBestSeller"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:text="@string/best_sellers" />
+
+                    <ImageView
+                        android:id="@+id/imgBestSellet"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:src="@drawable/best_sells" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linNewArrival"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/home_items"
+                    android:background="@drawable/inputbg"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/txtNewArrival"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:text="@string/new_arrivals" />
+
+                    <ImageView
+                        android:id="@+id/imgNewArrival"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:src="@drawable/new_arrival" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linUnder"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/home_items"
+                    android:background="@drawable/inputbg"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/txtUnder"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:text="@string/unnder_1.99" />
+
+                    <ImageView
+                        android:id="@+id/imgUnder"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:src="@drawable/under" />
+                </LinearLayout> -->
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/linCategories"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/linGrid1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/inputbg"
+                        android:gravity="center" >
+
+                        <ImageView
+                            android:id="@+id/img1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/txt1"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/my_account" />
+
+                        <TextView
+                            android:id="@+id/txt1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:freezesText="true"
+                            android:gravity="center"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            
+                            
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:text="Item 1"
+                                android:textSize="10sp"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+                        
+                        <FrameLayout 
+                            android:id="@+id/frm1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            ></FrameLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/inputbg"
+                        android:gravity="center" >
+
+                        <ImageView
+                            android:id="@+id/img2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/txt2"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/my_account" />
+
+                        <TextView
+                            android:id="@+id/txt2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:freezesText="true"
+                            android:gravity="center"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            
+                            
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:text="Item 1"
+                                android:textSize="10sp"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+                        
+                        <FrameLayout 
+                            android:id="@+id/frm2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            ></FrameLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/inputbg"
+                        android:gravity="center" >
+
+                        <ImageView
+                            android:id="@+id/img3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/txt3"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/my_account" />
+
+                        <TextView
+                            android:id="@+id/txt3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:freezesText="true"
+                            android:gravity="center"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            
+                            
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:text="Item 1"
+                                android:textSize="10sp"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+                        
+                        
+                        <FrameLayout 
+                            android:id="@+id/frm3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            ></FrameLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linGrid2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/inputbg"
+                        android:gravity="center" >
+
+                        <ImageView
+                            android:id="@+id/img4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/txt4"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/my_account" />
+
+                        <TextView
+                            android:id="@+id/txt4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:freezesText="true"
+                            android:gravity="center"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            
+                            
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:text="Item 1"
+                                android:textSize="10sp"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+                        
+                        
+                        <FrameLayout 
+                            android:id="@+id/frm4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            ></FrameLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/inputbg"
+                        android:gravity="center" >
+
+                        <ImageView
+                            android:id="@+id/img5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/txt5"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/my_account" />
+
+                        <TextView
+                            android:id="@+id/txt5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:freezesText="true"
+                            android:gravity="center"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            
+                            
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:text="Item 1"
+                                android:textSize="10sp"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+                        
+                        <FrameLayout 
+                            android:id="@+id/frm5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            ></FrameLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/inputbg"
+                        android:gravity="center" >
+
+                        <ImageView
+                            android:id="@+id/img6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/txt6"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/my_account" />
+
+                        <TextView
+                            android:id="@+id/txt6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:freezesText="true"
+                            android:gravity="center"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            
+                            
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:text="Item 1"
+                                android:textSize="10sp"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+                        
+                        <FrameLayout 
+                            android:id="@+id/frm6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            ></FrameLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linGrid3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/inputbg"
+                        android:gravity="center" >
+
+                        <ImageView
+                            android:id="@+id/img7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/txt7"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/my_account" />
+
+                        <TextView
+                            android:id="@+id/txt7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:freezesText="true"
+                            android:gravity="center"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            
+                            
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:textSize="10sp"
+                            android:text="Item 1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+                        
+                        <FrameLayout 
+                            android:id="@+id/frm7"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            ></FrameLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/inputbg"
+                        android:gravity="center" >
+
+                        <ImageView
+                            android:id="@+id/img8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/txt8"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/my_account" />
+
+                        <TextView
+                            android:id="@+id/txt8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:freezesText="true"
+                            android:gravity="center"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            
+                            
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:text="Item 1"
+                            android:textSize="10sp"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+                        
+                        
+                        <FrameLayout 
+                            android:id="@+id/frm8"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            ></FrameLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/inputbg"
+                        android:gravity="center" >
+
+                        <ImageView
+                            android:id="@+id/img9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/txt9"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/my_account" />
+
+                        <TextView
+                            android:id="@+id/txt9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:freezesText="true"
+                            android:gravity="center"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            
+                            
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:text="Item 1"
+                                android:textSize="10sp"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black" />
+                        
+                        
+                        <FrameLayout 
+                            android:id="@+id/frm9"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            ></FrameLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    
+    <color name="grey">#848482</color>
+    
+    <color name="light_grey">#e3e3ea</color>
+    
+    
+    <color name="cacheHintColor">#00000000</color>
+   
+   
+   
+   <color name="purple">#67087b</color>
+   
+   <color name="green">#00622f</color>
+   <color name="yellow">#f4b936</color>
+   
+   
+   <color name="blue">#1863a0</color>
+   <color name="orange">#ff5a00</color>
+   <color name="rose">#ff0096</color>
+   
+     <color name="com_facebook_picker_search_bar_background">#fff5f5f7</color>
+    <color name="com_facebook_picker_search_bar_text">#ffbcbdc2</color>
+    <color name="com_facebook_blue">#ff3b5998</color>
+    <color name="com_facebook_usersettingsfragment_connected_text_color">#ffffffff</color>
+    <color name="com_facebook_usersettingsfragment_connected_shadow_color">#ff000000</color>
+    <color name="com_facebook_usersettingsfragment_not_connected_text_color">#ffa6aed7</color>
+    <color name="com_facebook_loginview_text_color">#ffffffff</color>
+    <item type="color" name="common_signin_btn_dark_text_default">@*android:color/white</item>
+    <item type="color" name="common_signin_btn_dark_text_pressed">@*android:color/white</item>
+    <color name="common_signin_btn_dark_text_disabled">#ffaaaaaa</color>
+    <item type="color" name="common_signin_btn_dark_text_focused">@*android:color/white</item>
+    <color name="common_signin_btn_light_text_default">#ff737373</color>
+    <item type="color" name="common_signin_btn_light_text_pressed">@*android:color/white</item>
+    <color name="common_signin_btn_light_text_disabled">#ffaaaaaa</color>
+    <color name="common_signin_btn_light_text_focused">#ff737373</color>
+    <color name="common_signin_btn_default_background">#ffdd4b39</color>
+    <color name="common_action_bar_splitter">#ffd2d2d2</color>
+    <color name="imgfixbg">#ffededed</color>
+    <color name="jiancolor">#ffaaaaaa</color>
+    <color name="quareimgbg">#ffe5e5e5</color>
+    <color name="transparent">#00000000</color>
+    <color name="bgcolor">#ffefefef</color>
+    <color name="imgbg">#ffcdccc9</color>
+    <color name="alpha">#00000000</color>
+    <color name="black">#ff000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="red">#ffff0000</color>
+    <color name="grayLight">#ff515151</color>
+    <color name="text_default">#ff2c2c2c</color>
+    <color name="buttoncolor">#ff838383</color>
+    <color name="splitcolor">#ffeeeeee</color>
+    <color name="littlered">#ffca3b30</color>
+    <color name="gray">#ff777777</color>
+    <color name="shop_text_color1">#ffc47a00</color>
+    <color name="shop_text_color2">#ff5f7c10</color>
+    <color name="shop_text_color3">#ff24829c</color>
+    <color name="search_bg_color">#ffcecece</color>
+    <color name="babydetail_bg">#ffffe184</color>
+    <color name="babydetail_title_bg">#ff623b36</color>
+    <color name="setting_item_color">#ff8c8a8a</color>
+    <color name="newarrive_item_time_color">#ff818181</color>
+    <color name="baby_detail_tv_color">#ff623b36</color>
+    <color name="shop_service_pink">#ffff4754</color>
+    <color name="shop_service_green">#ff509f1b</color>
+    <color name="lightgray">#ffa4a4a4</color>
+    <color name="search_history">#ffda5f00</color>
+    <color name="search_suggest">#ff595757</color>
+    <color name="search_yellow">#ffda5f00</color>
+    <color name="search_gray">#ff828283</color>
+    <color name="conver_item_bg_press">#19000000</color>
+    <color name="bg_normal">#fff4f4f4</color>
+    <color name="primary_text_on_light">#ff333333</color>
+    <color name="secondary_text_on_light">#ff848484</color>
+    <color name="primary_grey_text_on_light">#ff545454</color>
+    <color name="secondary_grey_text_on_light">#ff999999</color>
+    <color name="button_text_color">#ff333333</color>
+    <color name="btn_pressed">#ff0070e8</color>
+    <color name="view_bg_color">#ffffffff</color>
+    <color name="bg_label">#ffdcdcdc</color>
+    <color name="sort_item_h">#ffca3038</color>
+    <color name="sort_item_n">#ff292929</color>
+    <color name="me_graylight">#ff838383</color>
+    <color name="me_split_color">#ffededed</color>
+    <color name="me_address_second_name_color">#ff1d1d1d</color>
+    <color name="menu_third_selectbg">#ffd9d9d9</color>
+    <color name="menu_third_selecttext">#ff1d1d1d</color>
+    <color name="menu_third_bg">#ffeaeaea</color>
+    <color name="menu_third_text">#ff838383</color>
+    <color name="menu_search_bg">#ff434343</color>
+
+</resources>
